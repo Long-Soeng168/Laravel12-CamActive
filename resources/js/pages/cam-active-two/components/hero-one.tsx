@@ -6,7 +6,7 @@ const HeroOne = () => {
     return (
         <div className="flex items-center justify-center">
             <div className="mx-auto grid w-full max-w-screen-xl gap-12 px-6 py-20 lg:grid-cols-2">
-                <div>
+                <div> 
                     <h1 className="max-w-[10ch] text-4xl !leading-[1.2] font-bold md:text-5xl lg:text-[2.75rem] xl:text-7xl">
                         Welcome to Cam-Active
                     </h1>
