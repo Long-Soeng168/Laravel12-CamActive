@@ -10,7 +10,7 @@ const HeroOne = () => {
                 <div>
                     <h1 className="leading-tight font-bold lg:text-5xl">Driving Educational Excellence</h1>
                     <p className="mt-6 max-w-[60ch] text-xl">Your partner in progress, one product, one partner, and one community at a time.</p>
-                    <div className="mt-12 flex items-center gap-4">
+                    <div className="mt-12 flex flex-wrap items-center gap-4">
                         <Link href={`/products`} prefetch>
                             <HoverButton
                                 label="Explore Our Work"

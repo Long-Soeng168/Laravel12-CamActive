@@ -12,7 +12,7 @@ const HoverButton: React.FC<HoverButtonProps> = ({ label, icon, gradientFrom = '
     return (
         <button
             onClick={onClick}
-            className={`relative overflow-hidden rounded-md bg-gradient-to-r ${gradientFrom} ${gradientTo} group cursor-pointer text-lg font-medium tracking-wide text-white transition-transform active:scale-95`}
+            className={`relative whitespace-nowrap overflow-hidden rounded-md bg-gradient-to-r ${gradientFrom} ${gradientTo} group cursor-pointer text-lg font-medium tracking-wide text-white transition-transform active:scale-95`}
         >
             {/* Moving skew layer */}
             <span className="bg-primary absolute inset-0 -left-[10%] w-[120%] skew-x-12 transition-transform duration-500 ease-[cubic-bezier(0.3,1,0.8,1)] group-hover:translate-x-full"></span>
