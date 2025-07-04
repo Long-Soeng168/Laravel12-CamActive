@@ -14,7 +14,7 @@ export function Navbar({ className }: { className?: string }) {
     const isActive = (path: string) => (url === path ? 'text-primary font-bold underline underline-offset-4' : 'hover:text-primary');
 
     return (
-        <div className={cn('mx-auto flex max-w-screen-xl items-center justify-between px-4', className)}>
+        <div className={cn('mx-auto flex max-w-screen-xl items-center justify-between px-4 py-1.5', className)}>
             <Link href={'/'} prefetch>
                 <img src="/assets/cam-active/Camactive-Logo-Light.png" className="h-14 rounded-full dark:hidden" alt="Cam-Active Logo" />
                 <img src="/assets/cam-active/Camactive-Logo-Dark.png" className="hidden h-14 rounded-full dark:block" alt="Cam-Active Logo" />
