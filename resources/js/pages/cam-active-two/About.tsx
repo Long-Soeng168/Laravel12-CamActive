@@ -44,6 +44,41 @@ const Careers = () => {
                 <OurApproach />
                 <OurTeam />
             </div>
+            <div className="mx-auto mt-20 max-w-screen-xl">
+                <Card className="flex flex-row justify-start gap-0 overflow-hidden rounded-xl border border-none border-gray-200 px-4 shadow-none transition sm:flex-row">
+                    <CardContent className="flex flex-col justify-center p-0">
+                        <h2 className="text-3xl font-bold tracking-tight">Our Story</h2>
+                        <div className="text-lg prose max-w-none">
+                            <section>
+                                <h2>Building a Stronger Cambodia Together</h2>
+                                <p>
+                                    Founded in **Phnom Penh** in **2018**, our journey began with a deep belief: lasting change flourishes when local
+                                    communities are empowered. We recognized the urgent need for practical and sustainable solutions in both
+                                    **education** and **logistics** across Cambodia.
+                                </p>
+                                <p>
+                                    From a small, passionate team, we grew quickly. We dedicated months to direct engagement, listening intently to
+                                    community leaders, educators, and local entrepreneurs to understand their specific needs. This grassroots
+                                    foundation is at the heart of all we do.
+                                </p>
+                                <h3>Innovative Solutions, Real Impact</h3>
+                                <p>
+                                    Our early efforts centered on crafting **pilot programs** that were not only innovative but also genuinely
+                                    tailored to the Cambodian context. We embraced every lesson, celebrated every triumph, and steadily established
+                                    our reputation for delivering impactful, reliable solutions. From ensuring access to quality learning materials in
+                                    remote schools to streamlining supply chains for vital goods, our work is consistently driven by one goal: to
+                                    foster a stronger, more resilient Cambodia.
+                                </p>
+                                <p>
+                                    Our growth continues today, guided by the same principles of **collaboration and innovation** that ignited our
+                                    initial mission. We are incredibly proud to walk alongside Cambodia on its journey, working hand-in-hand with
+                                    communities to forge a future where every individual and organization can reach their fullest potential.
+                                </p>
+                            </section>
+                        </div>
+                    </CardContent>
+                </Card>
+            </div>
             {/* <HeroTwo />
             <OurServices />
             <OurResources />

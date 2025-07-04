@@ -46,7 +46,7 @@ export function MyNavbar({ className }: { className?: string }) {
                             )}
 
                             {pages_menus?.solutions && (
-                                <Link prefetch href={`/solutions`}>
+                                <Link prefetch href={`/products`}>
                                     <MenuItem
                                         setActive={setActive}
                                         active={active}
@@ -55,7 +55,7 @@ export function MyNavbar({ className }: { className?: string }) {
                                         {pages_menus?.solutions.children?.length > 0 && (
                                             <div className="flex flex-col space-y-4 text-sm">
                                                 {pages_menus?.solutions.children?.map((solution) => (
-                                                    <HoveredLink href={`/solutions#${solution?.code}`}>
+                                                    <HoveredLink href={`/products#${solution?.code}`}>
                                                         {currentLocale == 'kh' ? solution?.title_kh : solution?.title}
                                                     </HoveredLink>
                                                 ))}

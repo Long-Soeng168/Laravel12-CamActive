@@ -7,8 +7,8 @@ Route::get('/', function () {
     return Inertia::render('cam-active/Index');
 })->name('home');
 
-Route::get('/solutions', function () {
-    return Inertia::render('cam-active/Solutions');
+Route::get('/products', function () {
+    return Inertia::render('cam-active/products');
 });
 
 Route::get('/company', function () {

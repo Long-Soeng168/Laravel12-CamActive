@@ -22,6 +22,7 @@ const SendUsMessage = () => {
                 <Label htmlFor="message">Message</Label>
                 <Textarea id="message" placeholder="Type your message here." />
             </div>
+            
             <Button className="w-full">Submit</Button>
         </div>
     );

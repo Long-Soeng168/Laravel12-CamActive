@@ -73,7 +73,7 @@ class WestecController extends Controller
             ->orderBy('order_index')
             ->first();
         // return $our_commitment_detail;
-        return Inertia::render('westec/Solutions', [
+        return Inertia::render('westec/products', [
             'security_detail' => $security_detail,
             'smart_home_detail' => $smart_home_detail,
             'commercial_detail' => $commercial_detail,

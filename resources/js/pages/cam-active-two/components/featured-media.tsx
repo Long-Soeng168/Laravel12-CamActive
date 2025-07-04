@@ -41,7 +41,7 @@ const FeaturedMedia = () => {
             <div className="w-full max-w-full flex-1 rounded-md whitespace-nowrap lg:min-w-2xl">
                 <div className="z-30 flex justify-between">
                     <h2 className="text-3xl font-bold tracking-tight">Featured Media</h2>
-                    <Link href={`/posts`}>
+                    <Link href={`/search_resources`}>
                         <Button size="sm" variant="outline">
                             See More <ArrowRightIcon />
                         </Button>
@@ -52,7 +52,7 @@ const FeaturedMedia = () => {
                     <ScrollArea className="w-full">
                         <div className="flex space-x-4 p-4 pb-6">
                             {caseStudies.map((item) => (
-                                <Link href={'/posts/1'} key={item.id}>
+                                <Link href={'/resources/1'} key={item.id}>
                                     <Card className="w-60 gap-2 overflow-hidden rounded-none border-none p-0 transition-all duration-300 hover:scale-105">
                                         <CardHeader className="p-0">
                                             <div className="flex aspect-video w-full shrink-0 justify-center overflow-hidden rounded-lg md:justify-start">
@@ -82,8 +82,8 @@ const FeaturedMedia = () => {
             <aside className="w-full shrink-0 lg:max-w-xs">
                 <h3 className="text-3xl font-bold tracking-tight">Resources & Reports</h3>
                 <div className="mt-4 grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-1">
-                    {['Annual Impact Report 2024', 'Toolkits & Guides', 'Policy Briefs'].map((item) => (
-                        <Link href={`/posts`} className="text-primary flex text-base whitespace-pre-line hover:underline" key={item}>
+                    {['Annual Report', 'Toolkits & Guides', 'Policy Briefs', 'Articles', 'Media', 'Products'].map((item) => (
+                        <Link href={`/search_resources`} className="text-primary flex text-base whitespace-pre-line hover:underline" key={item}>
                             <ChevronRightIcon /> {item}
                         </Link>
                     ))}

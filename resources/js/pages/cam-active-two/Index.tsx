@@ -15,8 +15,8 @@ const Index = () => {
             <WhyPartnerWithUs />
             <div className="mx-auto flex max-w-screen-xl flex-wrap items-end justify-between gap-4 px-6">
                 <div className="z-30 flex w-full justify-between">
-                    <h2 className="text-3xl font-bold tracking-tight">Latest Posts</h2>
-                    <Link href={`/posts`}>
+                    <h2 className="text-3xl font-bold tracking-tight">Recent Resources</h2>
+                    <Link href={`/search_resources`}>
                         <Button size="sm" variant="outline">
                             See More <ArrowRightIcon />
                         </Button>

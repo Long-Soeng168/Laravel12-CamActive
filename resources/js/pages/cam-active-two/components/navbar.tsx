@@ -16,7 +16,7 @@ export function Navbar({ className }: { className?: string }) {
     return (
         <div className={cn('mx-auto flex max-w-screen-xl items-center justify-between px-4', className)}>
             <Link href={'/'} prefetch>
-                <img src="/assets/cam-active/logo.png" className="h-20 p-2" />
+                <img src="/assets/cam-active/Camactive-Logo.webp" className="h-20 p-2 rounded-full" />
                 {/* <img src="/assets/icons/image-icon.png" className="h-20 p-2" /> */}
             </Link>
 
@@ -31,14 +31,14 @@ export function Navbar({ className }: { className?: string }) {
                         <Link href="/" className={`hover:text-foreground block text-lg font-semibold ${isActive('/')}`}>
                             Home
                         </Link>
-                        <Link href="/solutions" className={`hover:text-foreground block text-lg font-semibold ${isActive('/solutions')}`}>
-                            Solutions
+                        <Link href="/products" className={`hover:text-foreground block text-lg font-semibold ${isActive('/products')}`}>
+                            Products
                         </Link>
                         <Link href="/impact" className={`hover:text-foreground block text-lg font-semibold ${isActive('/impact')}`}>
                             Impact
                         </Link>
-                        <Link href="/insights" className={`hover:text-foreground block text-lg font-semibold ${isActive('/insights')}`}>
-                            Insights
+                        <Link href="/resources" className={`hover:text-foreground block text-lg font-semibold ${isActive('/resources')}`}>
+                            Resources & Reports
                         </Link>
                         <Link href="/careers" className={`hover:text-foreground block text-lg font-semibold ${isActive('/careers')}`}>
                             Careers
@@ -57,25 +57,25 @@ export function Navbar({ className }: { className?: string }) {
                     <Link href={'/'} prefetch className={isActive('/')}>
                         Home
                     </Link>
-                    {/* <Link href={'/solutions'} prefetch>
+                    {/* <Link href={'/products'} prefetch>
                         <MenuItem setActive={setActive} active={active} item="Solutions">
                             <div className="flex flex-col space-y-4 text-sm">
-                                <HoveredLink href="/solutions" prefetch>
+                                <HoveredLink href="/products" prefetch>
                                     Our Services
                                 </HoveredLink>
-                                <HoveredLink href="/solutions" prefetch>
+                                <HoveredLink href="/products" prefetch>
                                     Our Resources
                                 </HoveredLink>
-                                <HoveredLink href="/solutions" prefetch>
+                                <HoveredLink href="/products" prefetch>
                                     Catalog Functionality
                                 </HoveredLink>
-                                <HoveredLink href="/solutions" prefetch>
+                                <HoveredLink href="/products" prefetch>
                                     Our Integrated Solutions
                                 </HoveredLink>
-                                <HoveredLink href="/solutions" prefetch>
+                                <HoveredLink href="/products" prefetch>
                                     Technology-Based Solutions
                                 </HoveredLink>
-                                <HoveredLink href="/solutions" prefetch>
+                                <HoveredLink href="/products" prefetch>
                                     Why Choose Us
                                 </HoveredLink>
                             </div>
@@ -104,14 +104,14 @@ export function Navbar({ className }: { className?: string }) {
                         </MenuItem>
                     </Link> */}
 
-                    <Link href={'/solutions'} prefetch className={isActive('/solutions')}>
-                        Solutions
+                    <Link href={'/products'} prefetch className={isActive('/products')}>
+                        Products
                     </Link>
                     <Link href={'/impact'} prefetch className={isActive('/impact')}>
                         Impact
                     </Link>
-                    <Link href={'/insights'} prefetch className={isActive('/insights')}>
-                        Insights
+                    <Link href={'/resources'} prefetch className={isActive('/resources')}>
+                        Resources & Reports
                     </Link>
                     <Link href={'/careers'} prefetch className={isActive('/careers')}>
                         Careers

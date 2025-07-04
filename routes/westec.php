@@ -6,7 +6,7 @@ use Inertia\Inertia;
 
 Route::get('/', [WestecController::class, 'index'])->name('home');
 Route::get('/about', [WestecController::class, 'about'])->name('about');
-Route::get('/solutions', [WestecController::class, 'solutions'])->name('solutions');
+Route::get('/products', [WestecController::class, 'solutions'])->name('solutions');
 Route::get('/case_studies', [WestecController::class, 'case_studies'])->name('case_studies');
 
 

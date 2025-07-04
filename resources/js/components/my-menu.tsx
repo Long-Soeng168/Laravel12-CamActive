@@ -8,7 +8,7 @@ const MyMenu = () => {
                     About Us
                 </Link>
                 <Link
-                    href="/solutions"
+                    href="/products"
                     className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium hover:border-indigo-900 text-black"
                 >
                     Solutions

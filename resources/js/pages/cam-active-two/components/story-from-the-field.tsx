@@ -1,6 +1,5 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Link } from '@inertiajs/react';
 
 const caseStudies = [
@@ -62,52 +61,31 @@ const StoryFromTheField = () => {
             <div>
                 <h2 className="text-3xl font-bold tracking-tight">Stories from the Field</h2>
 
-                <div className="mt-4 space-y-4">
+                <div className="mt-4">
                     {caseStudies.map((item) => (
-                        <Dialog>
-                            <DialogTrigger>
-                                <Card
-                                    key={item.id}
-                                    className="bg-primary/10 flex cursor-pointer flex-row gap-0 overflow-hidden rounded-xl border border-none border-gray-200 text-start shadow-none transition-all duration-300 hover:scale-105 sm:flex-row"
-                                >
-                                    <CardHeader>
-                                        <div className="aspect-square size-20 rounded-lg">
-                                            <img
-                                                src={`/assets/cam-active/stories-from-the-field/${item.image}`}
-                                                className="size-20 shrink-0 object-contain"
-                                                alt=""
-                                            />
-                                        </div>
-                                    </CardHeader>
+                        <Link href={`/impact/1`}>
+                            <Card
+                                key={item.id}
+                                className="bg-primary/10 mt-4 flex cursor-pointer flex-row gap-0 overflow-hidden rounded-xl border border-none border-gray-200 text-start shadow-none transition-all duration-300 hover:scale-105 sm:flex-row"
+                            >
+                                <CardHeader>
+                                    <div className="aspect-square size-20 rounded-lg">
+                                        <img
+                                            src={`/assets/cam-active/stories-from-the-field/${item.image}`}
+                                            className="size-20 shrink-0 object-contain"
+                                            alt=""
+                                        />
+                                    </div>
+                                </CardHeader>
 
-                                    <CardContent className="flex flex-col justify-center p-0 pr-4">
-                                        <h3 className="text-foreground line-clamp-2 text-lg leading-snug font-semibold tracking-tight lg:text-xl">
-                                            {item.title}
-                                        </h3>
-                                        <p className="text-foreground mt-2 line-clamp-3 text-xs lg:text-sm">{item.short_description}</p>
-                                    </CardContent>
-                                </Card>
-                            </DialogTrigger>
-                            <DialogContent showCloseButton={true}>
-                                <DialogHeader>
-                                    <DialogTitle>
-                                        <div className="flex shrink-0 justify-center rounded-lg md:justify-start">
-                                            <img
-                                                src={`/assets/cam-active/stories-from-the-field/${item.image}`}
-                                                className="mb-2 size-20 shrink-0 object-contain"
-                                                alt=""
-                                            />
-                                        </div>
-                                        {/* <div className="mb-2 flex justify-center sm:justify-start">{item.icon}</div> */}
-                                        <p className="text-xl">{item.title}</p>
-                                    </DialogTitle>
-                                    <DialogDescription>
-                                        <p className="text-foreground text-base">{item.short_description}</p>
-                                        <p className="prose text-foreground" dangerouslySetInnerHTML={{ __html: item.long_description }}></p>
-                                    </DialogDescription>
-                                </DialogHeader>
-                            </DialogContent>
-                        </Dialog>
+                                <CardContent className="flex flex-col justify-center p-0 pr-4">
+                                    <h3 className="text-foreground line-clamp-2 text-lg leading-snug font-semibold tracking-tight lg:text-xl">
+                                        {item.title}
+                                    </h3>
+                                    <p className="text-foreground mt-2 line-clamp-3 text-xs lg:text-sm">{item.short_description}</p>
+                                </CardContent>
+                            </Card>
+                        </Link>
                     ))}
                 </div>
             </div>

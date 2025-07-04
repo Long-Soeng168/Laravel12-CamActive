@@ -7,27 +7,31 @@ Route::get('/', function () {
     return Inertia::render('cam-active-two/Index');
 })->name('home');
 
-Route::get('/solutions', function () {
-    return Inertia::render('cam-active-two/Solutions');
+Route::get('/products', function () {
+    return Inertia::render('cam-active-two/products/Index');
+});
+Route::get('/products/{id}', function () {
+    return Inertia::render('cam-active-two/products/Show');
 });
 
 Route::get('/impact', function () {
-    return Inertia::render('cam-active-two/Impact');
+    return Inertia::render('cam-active-two/impacts/Index');
+});
+Route::get('/impact/{id}', function () {
+    return Inertia::render('cam-active-two/impacts/Show');
 });
 
-Route::get('/company', function () {
-    return Inertia::render('cam-active-two/Company');
+Route::get('/search_resources', function () {
+    return Inertia::render('cam-active-two/resources/Search-Resources');
+});
+Route::get('/resources', function () {
+    return Inertia::render('cam-active-two/resources/Index');
+});
+Route::get('/resources/{id}', function () {
+    return Inertia::render('cam-active-two/resources/Show');
 });
 
-Route::get('/insights', function () {
-    return Inertia::render('cam-active-two/Insights');
-});
-Route::get('/posts', function () {
-    return Inertia::render('cam-active-two/Posts');
-});
-Route::get('/posts/{id}', function () {
-    return Inertia::render('cam-active-two/posts/Show');
-});
+
 
 Route::get('/careers', function () {
     return Inertia::render('cam-active-two/Careers');
@@ -38,4 +42,15 @@ Route::get('/about', function () {
 
 Route::get('/contact', function () {
     return Inertia::render('cam-active-two/Contact');
+});
+
+Route::get('/privacy', function () {
+    return Inertia::render('cam-active-two/pages/Show');
+});
+Route::get('/terms', function () {
+    return Inertia::render('cam-active-two/pages/Show');
+});
+
+Route::get('/who-we-work-with/{id}', function () {
+    return Inertia::render('cam-active-two/pages/Show');
 });

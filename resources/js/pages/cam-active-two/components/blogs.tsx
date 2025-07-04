@@ -8,7 +8,7 @@ const BlogPosts = () => {
     return (
         <div className="mx-auto max-w-screen-xl px-6 py-16 xl:px-6">
             <div className="flex flex-wrap items-end justify-between gap-4">
-                <h2 className="text-3xl font-bold tracking-tight">Posts</h2>
+                <h2 className="text-3xl font-bold tracking-tight">Resources & Reports</h2>
                 <div className="flex w-full flex-wrap items-center justify-end gap-4 md:w-auto">
                     <div className="relative block flex-1">
                         <Search className="absolute inset-y-0 left-2.5 my-auto h-5 w-5" />
@@ -17,16 +17,15 @@ const BlogPosts = () => {
                             placeholder="Search"
                         />
                     </div>
-                    <Select defaultValue="recommended">
+                    {/* <Select defaultValue="recommended">
                         <SelectTrigger className="w-[120px]">
                             <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
                             <SelectItem value="recommended">Articles</SelectItem>
-                            <SelectItem value="latest">Videos</SelectItem>
-                            {/* <SelectItem value="popular">Audio</SelectItem> */}
+                            <SelectItem value="latest">Videos</SelectItem> 
                         </SelectContent>
-                    </Select>
+                    </Select> */}
                     <Select defaultValue="recommended">
                         <SelectTrigger className="w-[220px]">
                             <SelectValue />
@@ -35,6 +34,9 @@ const BlogPosts = () => {
                             <SelectItem value="recommended">Annual Impact Report</SelectItem>
                             <SelectItem value="latest">Toolkits & Guides</SelectItem>
                             <SelectItem value="popular">Policy Briefs</SelectItem>
+                            <SelectItem value="Articles">Articles</SelectItem>
+                            <SelectItem value="Medias">Medias</SelectItem>
+                            <SelectItem value="Products">Products</SelectItem>
                         </SelectContent>
                     </Select>
                 </div>
@@ -42,7 +44,7 @@ const BlogPosts = () => {
 
             <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {[0, 1, 2, 3, 4, 5, 6, 7].map((i) => (
-                    <Link href={`/posts/1`} prefetch key={i}>
+                    <Link href={`/resources/1`} prefetch key={i}>
                         <Card className="gap-2 overflow-hidden rounded-none border-none p-0 transition-all duration-300 hover:scale-105">
                             <CardHeader className="p-0">
                                 <div className="flex aspect-video w-full shrink-0 justify-center overflow-hidden rounded-lg md:justify-start">

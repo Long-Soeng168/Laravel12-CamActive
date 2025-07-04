@@ -1,24 +1,24 @@
 import { Button } from '@/components/ui/button';
 import { Link } from '@inertiajs/react';
 import { ArrowUpRight, Handshake } from 'lucide-react';
+import HoverButton from './hover-button';
 
 const HeroOne = () => {
     return (
         <div className="flex items-center justify-center">
             <div className="mx-auto grid w-full max-w-screen-xl gap-12 px-6 py-20 lg:grid-cols-2">
-                <div> 
-                    <h1 className="max-w-[10ch] text-4xl !leading-[1.2] font-bold md:text-5xl lg:text-[2.75rem] xl:text-7xl">
-                        Welcome to Cam-Active
-                    </h1>
-                    <p className="mt-6 max-w-[60ch] text-xl">
-                        Your partner for educational solutions and real-world impact. We’re Cam-Active—a team of passionate problem-solvers working at
-                        the intersection of education and logistics.
-                    </p>
+                <div>
+                    <h1 className="leading-tight font-bold lg:text-5xl">Driving Educational Excellence</h1>
+                    <p className="mt-6 max-w-[60ch] text-xl">Your partner in progress, one product, one partner, and one community at a time.</p>
                     <div className="mt-12 flex items-center gap-4">
-                        <Link href={`/solutions`} prefetch>
-                            <Button size="lg">
-                                Explore Our Work <ArrowUpRight className="!h-5 !w-5" />
-                            </Button>
+                        <Link href={`/products`} prefetch>
+                            <HoverButton
+                                label="Explore Our Work"
+                                icon={<ArrowUpRight className="h-5 w-5" />}
+                                gradientFrom="from-true-primary"
+                                gradientTo="to-blue-600"
+                                onClick={() => console.log('Explore clicked')}
+                            />
                         </Link>
                         <Link href={`/contact`} prefetch>
                             <Button variant="outline" size="lg">
@@ -27,8 +27,8 @@ const HeroOne = () => {
                         </Link>
                     </div>
                 </div>
-                <div className="bg-transparent aspect-video w-full rounded-xl">
-                    <img src="/assets/cam-active/hero1.png" alt="" />
+                <div className="aspect-video w-full max-w-full rounded-xl bg-transparent">
+                    <img src="/assets/cam-active/hero1.png" alt="" className="size-full" />
                 </div>
             </div>
         </div>

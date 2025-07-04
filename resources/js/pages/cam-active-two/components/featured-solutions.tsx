@@ -8,25 +8,25 @@ const features = [
         id: 1,
         title: 'Integrated School Packages',
         details: 'Streamline your operations and enhance learning with our bundled services and supplies.',
-        tutorialLink: '/solutions',
+        tutorialLink: '/products',
     },
     {
         id: 2,
         title: 'Global Resource Access',
         details: 'Source the exact educational materials you need from our extensive international network.',
-        tutorialLink: '/solutions',
+        tutorialLink: '/products',
     },
     {
         id: 3,
         title: 'Personalized Learning Support',
         details: 'Unlock your academic potential with our tailored tutoring and coaching programs.',
-        tutorialLink: '/solutions',
+        tutorialLink: '/products',
     },
     {
         id: 4,
         title: 'Corporate Training Support',
         details: 'Enhance employee performance, drive growth, and foster continuous learning with our comprehensive learning solutions.',
-        tutorialLink: '/solutions',
+        tutorialLink: '/products',
     },
 ];
 

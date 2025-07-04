@@ -11,7 +11,7 @@ const Footer = () => {
                     {/* Logo & Tagline */}
                     <div className="col-span-full lg:col-span-2">
                         <div className="flex items-center gap-2">
-                            <img src="/assets/cam-active/logo.png" className="h-16" alt="Cam-Active Logo" />
+                            <img src="/assets/cam-active/Camactive-Logo.webp" className="h-16 rounded-full" alt="Cam-Active Logo" />
                             <p className="text-xl font-bold">Cam Active</p>
                         </div>
                         <p className="text-muted-foreground mt-4">A Strategic Partner for Education & Impact.</p>
@@ -22,9 +22,10 @@ const Footer = () => {
                         <h6 className="font-semibold">Quick Links</h6>
                         <ul className="mt-6 space-y-4">
                             {[
-                                { title: 'Solutions', link: '/solutions' },
+                                { title: 'Products', link: '/products' },
                                 { title: 'Impact', link: '/impact' },
-                                { title: 'Insights', link: '/insights' },
+                                { title: 'Resources & Reports', link: '/resources' },
+                                { title: 'Careers', link: '/careers' },
                                 { title: 'About Us', link: '/about' },
                                 { title: 'Contact', link: '/contact' },
                             ].map((item, index) => (
@@ -78,11 +79,11 @@ const Footer = () => {
                     <span className="text-muted-foreground text-sm">©2025 Cam-Active Co., Ltd. All rights reserved.</span>
 
                     <div className="text-muted-foreground flex justify-center space-x-6 text-sm">
-                        <Link href="#" className="hover:text-foreground">
+                        <Link href="/privacy" className="hover:text-foreground">
                             Privacy Policy
                         </Link>
                         <span>|</span>
-                        <Link href="#" className="hover:text-foreground">
+                        <Link href="/terms" className="hover:text-foreground">
                             Terms of Use
                         </Link>
                     </div>

@@ -1,4 +1,6 @@
-import { CheckCircle } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Link } from '@inertiajs/react';
+import { ArrowUpRight, CheckCircle } from 'lucide-react';
 
 const WhyPartnerWithUs = () => {
     return (
@@ -21,6 +23,13 @@ const WhyPartnerWithUs = () => {
                                     <span>{text}</span>
                                 </li>
                             ))}
+                            <li>
+                                <Link href="/impact" prefetch>
+                                    <Button size="lg" variant="outline">
+                                        Learn More <ArrowUpRight className="!h-5 !w-5" />
+                                    </Button>
+                                </Link>
+                            </li>
                         </ul>
                     </div>
 
@@ -36,9 +45,10 @@ const WhyPartnerWithUs = () => {
                                 { title: 'Local and international suppliers', image: 'supplier.png' },
                                 { title: 'Talented individuals who want to make a difference', image: 'individual.png' },
                             ].map((item, i) => (
-                                <div
+                                <Link
+                                    href={`/who-we-work-with/1`}
                                     key={i}
-                                    className="bg-background flex flex-col items-center justify-start rounded-xl border border-dashed hover:border-solid border-gray-300 p-2 py-4 text-center transition hover:shadow-md"
+                                    className="bg-background flex flex-col items-center justify-start rounded-xl border border-dashed border-gray-300 p-2 py-4 text-center transition hover:border-solid hover:shadow-md"
                                 >
                                     <img
                                         src={`/assets/cam-active/who-we-work-with/${item.image}`}
@@ -46,7 +56,7 @@ const WhyPartnerWithUs = () => {
                                         className="mb-4 h-16 w-16 object-contain"
                                     />
                                     <p className="text-foreground text-base font-medium">{item.title}</p>
-                                </div>
+                                </Link>
                             ))}
                         </div>
                     </div>

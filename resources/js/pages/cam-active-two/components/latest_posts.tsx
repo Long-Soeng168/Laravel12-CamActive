@@ -6,7 +6,7 @@ const LatestPosts = () => {
         <div className="mx-auto max-w-screen-xl px-6 pb-20 xl:px-6">
             <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {[0, 1, 2].map((i) => (
-                    <Link href={'/posts/1'} key={i}>
+                    <Link href={'/resources/1'} key={i}>
                         <Card className="gap-2 overflow-hidden rounded-none border-none p-0 transition-all duration-300 hover:scale-105">
                             <CardHeader className="p-0">
                                 <div className="flex aspect-video w-full shrink-0 justify-center overflow-hidden rounded-lg md:justify-start">

@@ -35,7 +35,7 @@ const CurrentOpportunities = () => {
     return (
         <div className="mx-auto mb-20 flex max-w-screen-xl flex-col items-start gap-12 px-6 lg:flex-row">
             <div>
-                <h2 className="text-3xl font-bold tracking-tight">Stories from the Field</h2>
+                <h2 className="text-3xl font-bold tracking-tight">Current Opportunities</h2>
 
                 <div className="mt-4 space-y-4">
                     {data.map((item) => (
@@ -191,6 +191,26 @@ const CurrentOpportunities = () => {
                                                 />
                                             </div>
                                             <div className="w-full max-w-full">
+                                                <Label htmlFor="name">Name</Label>
+                                                <Input
+                                                    id="name"
+                                                    type="text"
+                                                    placeholder="Full Name"
+                                                    autoFocus={false}
+                                                    className="text-foreground dark:bg-primary/20 w-full max-w-full rounded-none"
+                                                />
+                                            </div>
+                                            <div className="w-full max-w-full">
+                                                <Label htmlFor="phone">Phone</Label>
+                                                <Input
+                                                    id="phone"
+                                                    type="text"
+                                                    placeholder="Phone Number"
+                                                    autoFocus={false}
+                                                    className="text-foreground dark:bg-primary/20 w-full max-w-full rounded-none"
+                                                />
+                                            </div>
+                                            <div className="w-full max-w-full">
                                                 <Label htmlFor="email">Email</Label>
                                                 <Input
                                                     id="email"
@@ -246,7 +266,7 @@ const CurrentOpportunities = () => {
                     </CardContent>
                     <CardFooter className="mt-4 gap-4 px-0">
                         <Link href={`#`} prefetch>
-                            <Button>Partner With Us</Button>
+                            <Button>Apply Now</Button>
                         </Link>
                     </CardFooter>
                 </Card>
