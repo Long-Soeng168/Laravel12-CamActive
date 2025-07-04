@@ -11,8 +11,9 @@ const Footer = () => {
                     {/* Logo & Tagline */}
                     <div className="col-span-full lg:col-span-2">
                         <div className="flex items-center gap-2">
-                            <img src="/assets/cam-active/Camactive-Logo.webp" className="h-16 rounded-full" alt="Cam-Active Logo" />
-                            <p className="text-xl font-bold">Cam Active</p>
+                            <img src="/assets/cam-active/Camactive-Logo-Light.png" className="h-24 rounded-full dark:hidden" alt="Cam-Active Logo" />
+                            <img src="/assets/cam-active/Camactive-Logo-Dark.png" className="h-24 rounded-full hidden dark:block" alt="Cam-Active Logo" />
+                            {/* <p className="text-xl font-bold">Cam Active</p> */}
                         </div>
                         <p className="text-muted-foreground mt-4">A Strategic Partner for Education & Impact.</p>
                     </div>

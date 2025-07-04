@@ -16,7 +16,8 @@ export function Navbar({ className }: { className?: string }) {
     return (
         <div className={cn('mx-auto flex max-w-screen-xl items-center justify-between px-4', className)}>
             <Link href={'/'} prefetch>
-                <img src="/assets/cam-active/Camactive-Logo.webp" className="h-20 p-2 rounded-full" />
+                <img src="/assets/cam-active/Camactive-Logo-Light.png" className="h-14 rounded-full dark:hidden" alt="Cam-Active Logo" />
+                <img src="/assets/cam-active/Camactive-Logo-Dark.png" className="hidden h-14 rounded-full dark:block" alt="Cam-Active Logo" />
                 {/* <img src="/assets/icons/image-icon.png" className="h-20 p-2" /> */}
             </Link>
 
