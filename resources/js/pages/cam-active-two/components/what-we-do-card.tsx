@@ -1,21 +1,28 @@
+import useTranslation from '@/hooks/use-translation';
 import { Link } from '@inertiajs/react';
 import styled from 'styled-components';
 
 const WhatWeDoCard = ({ item }: { item: any }) => {
+    const { t, currentLocale } = useTranslation();
+
+    const title = currentLocale === 'kh' ? (item.title_kh ?? item.title) : item.title;
+    const description = currentLocale === 'kh' ? (item.short_description_kh ?? item.short_description) : item.short_description;
+
     return (
         <StyledWrapper>
-            <Link key={item.id} href={`/products/1`} prefetch>
-                <div className="card h-full">
-                    <div className="card-title"></div>
-                    <p className="card-title flex flex-col items-center justify-center">
-                        <img src={`/assets/cam-active/what-we-do/${item.image}`} className="mb-2 size-20 shrink-0 object-contain" alt="" />
-                        <h3 className="text-2xl font-semibold">{item.title}</h3>
-                    </p>
-                    <p className="small-desc">
-                        <div className="flex shrink-0 justify-center rounded-lg md:justify-start"></div>
-                        <p className="line-clamp-3 text-lg">{item.description}</p>
-                    </p>
-                    <div className="go-corner">
+            <Link key={item.id} href={`/products/${item.id}`} prefetch>
+                <div className="card group relative h-full overflow-hidden rounded-xl bg-white shadow-md transition hover:shadow-lg">
+                    <header className="flex flex-col items-center justify-center p-4">
+                        <img src={`/assets/images/pages/${item.images[0]?.image}`} className="mb-3 size-20 object-contain" alt={title} />
+                        <h3 className="text-center text-2xl font-semibold group-hover:text-white">{title}</h3>
+                    </header>
+                    <div className="px-4 pb-4 text-center">
+                        <p
+                            className="line-clamp-3 text-lg text-foreground group-hover:text-white"
+                            dangerouslySetInnerHTML={{ __html: description }}
+                        ></p>
+                    </div>
+                    <div className="go-corner absolute right-4 bottom-4 text-xl text-blue-600">
                         <div className="go-arrow">→</div>
                     </div>
                 </div>

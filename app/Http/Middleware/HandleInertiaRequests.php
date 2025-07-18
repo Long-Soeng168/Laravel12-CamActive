@@ -69,29 +69,28 @@ class HandleInertiaRequests extends Middleware
             'item_categories' => ItemCategory::with('children')->withCount('items')->where('status', 'active')->where('parent_code', null)->orderBy('order_index')->orderBy('name')->get() ?? [],
             'post_counts' => Post::where('status', 'active')->count(),
 
-            // Westec
+            // Cam Active
             'pages_menus' => [
-                'abouts' => Page::where('code', 'ABOUT-US')
-                    ->with(['children' => function ($query) {
-                        $query->select('id', 'code', 'parent_id', 'title', 'title_kh');
-                    }])
+                'products' => Page::where('code', 'PRODUCTS')
                     ->where('status', 'active')
                     ->first(['id', 'code', 'title', 'title_kh']),
-                'solutions' => Page::where('code', 'SOLUTION')
-                    ->with(['children' => function ($query) {
-                        $query->select('id', 'code', 'parent_id', 'title', 'title_kh');
-                    }])
+                'impact' => Page::where('code', 'IMPACT')
                     ->where('status', 'active')
                     ->first(['id', 'code', 'title', 'title_kh']),
-                'case_studies' => Page::where('code', 'CASE-STUDIES')
-                    ->with(['children' => function ($query) {
-                        $query->select('id', 'code', 'parent_id', 'title', 'title_kh');
-                    }])
+                'resources' => Page::where('code', 'RESOURCES-&-REPORTS')
                     ->where('status', 'active')
                     ->first(['id', 'code', 'title', 'title_kh']),
-
+                'careers' => Page::where('code', 'CAREERS')
+                    ->where('status', 'active')
+                    ->first(['id', 'code', 'title', 'title_kh']),
+                'about' => Page::where('code', 'ABOUT-US')
+                    ->where('status', 'active')
+                    ->first(['id', 'code', 'title', 'title_kh']),
+                'contact' => Page::where('code', 'CONTACT-US')
+                    ->where('status', 'active')
+                    ->first(['id', 'code', 'title', 'title_kh']),
             ],
-            // End Westec
+            // End Cam Active
 
             'flash' => [
                 'success' => session('success'),

@@ -1,8 +1,11 @@
 import { Separator } from '@/components/ui/separator';
-import { Link } from '@inertiajs/react';
+import useTranslation from '@/hooks/use-translation';
+import { Link, usePage } from '@inertiajs/react';
 import Social from './social';
 
 const Footer = () => {
+    const { pages_menus, application_info } = usePage().props;
+    const { t, currentLocale } = useTranslation();
     return (
         <footer>
             <div className="mx-auto max-w-screen-xl">
@@ -12,7 +15,11 @@ const Footer = () => {
                     <div className="col-span-full lg:col-span-2">
                         <div className="flex items-center gap-2">
                             <img src="/assets/cam-active/Camactive-Logo-Light.png" className="h-24 rounded-full dark:hidden" alt="Cam-Active Logo" />
-                            <img src="/assets/cam-active/Camactive-Logo-Dark.png" className="h-24 rounded-full hidden dark:block" alt="Cam-Active Logo" />
+                            <img
+                                src="/assets/cam-active/Camactive-Logo-Dark.png"
+                                className="hidden h-24 rounded-full dark:block"
+                                alt="Cam-Active Logo"
+                            />
                             {/* <p className="text-xl font-bold">Cam Active</p> */}
                         </div>
                         <p className="text-muted-foreground mt-4">A Strategic Partner for Education & Impact.</p>
@@ -22,33 +29,60 @@ const Footer = () => {
                     <div>
                         <h6 className="font-semibold">Quick Links</h6>
                         <ul className="mt-6 space-y-4">
-                            {[
-                                { title: 'Products', link: '/products' },
-                                { title: 'Impact', link: '/impact' },
-                                { title: 'Resources & Reports', link: '/resources' },
-                                { title: 'Careers', link: '/careers' },
-                                { title: 'About Us', link: '/about' },
-                                { title: 'Contact', link: '/contact' },
-                            ].map((item, index) => (
-                                <li key={index}>
-                                    <Link href={typeof item === 'object' ? item.link : '#'} className="text-muted-foreground hover:text-foreground">
-                                        {typeof item === 'object' ? item.title : item}
+                            {pages_menus?.products && (
+                                <li>
+                                    <Link href="/products" className="text-muted-foreground hover:text-foreground">
+                                        {currentLocale === 'kh' ? pages_menus?.products.title_kh : pages_menus?.products.title}
                                     </Link>
                                 </li>
-                            ))}
+                            )}
+                            {pages_menus?.impact && (
+                                <li>
+                                    <Link href="/impact" className="text-muted-foreground hover:text-foreground">
+                                        {currentLocale === 'kh' ? pages_menus?.impact.title_kh : pages_menus?.impact.title}
+                                    </Link>
+                                </li>
+                            )}
+                            {pages_menus?.resources && (
+                                <li>
+                                    <Link href="/resources" className="text-muted-foreground hover:text-foreground">
+                                        {currentLocale === 'kh' ? pages_menus?.resources.title_kh : pages_menus?.resources.title}
+                                    </Link>
+                                </li>
+                            )}
+                            {pages_menus?.careers && (
+                                <li>
+                                    <Link href="/careers" className="text-muted-foreground hover:text-foreground">
+                                        {currentLocale === 'kh' ? pages_menus?.careers.title_kh : pages_menus?.careers.title}
+                                    </Link>
+                                </li>
+                            )}
+                            {pages_menus?.about && (
+                                <li>
+                                    <Link href="/about" className="text-muted-foreground hover:text-foreground">
+                                        {currentLocale === 'kh' ? pages_menus?.about.title_kh : pages_menus?.about.title}
+                                    </Link>
+                                </li>
+                            )}
+                            {pages_menus?.contact && (
+                                <li>
+                                    <Link href="/contact" className="text-muted-foreground hover:text-foreground">
+                                        {currentLocale === 'kh' ? pages_menus?.contact.title_kh : pages_menus?.contact.title}
+                                    </Link>
+                                </li>
+                            )}
                         </ul>
                     </div>
 
                     {/* Contact Information */}
                     <div className="lg:col-span-2">
-                        <h6 className="font-semibold">Contact</h6>
+                        <h6 className="font-semibold">{t('Contact')}</h6>
                         <ul className="text-muted-foreground mt-6 space-y-3 text-sm">
-                            <li>📍 19Eo, Street 118, Tuol Kork, Phnom Penh</li>
-                            <li>📞 +855 23 882 405</li>
+                            <li>{currentLocale === 'kh' ? application_info?.address_kh : application_info?.address}</li>
+                            <li>{application_info?.phone}</li>
                             <li>
-                                ✉️{' '}
-                                <a href="mailto:info@camactive.net" className="hover:underline">
-                                    info@camactive.net
+                                <a href={`mailto:${application_info?.email}`} className="hover:underline">
+                                    {application_info?.email}
                                 </a>
                             </li>
                         </ul>
@@ -68,7 +102,7 @@ const Footer = () => {
                                 </button>
                             </form> */}
                         {/* Social Icons */}
-                        <h6 className="font-semibold">Social Media</h6>
+                        <h6 className="font-semibold">{t('Social Media')}</h6>
                         <Social />
                     </div>
                 </div>
@@ -77,7 +111,9 @@ const Footer = () => {
 
                 {/* Bottom bar */}
                 <div className="flex flex-col-reverse items-center justify-between gap-x-2 gap-y-5 px-6 py-8 sm:flex-row xl:px-6">
-                    <span className="text-muted-foreground text-sm">©2025 Cam-Active Co., Ltd. All rights reserved.</span>
+                    <span className="text-muted-foreground text-sm">
+                        {currentLocale === 'kh' ? application_info?.copyright_kh : application_info?.copyright}
+                    </span>
 
                     <div className="text-muted-foreground flex justify-center space-x-6 text-sm">
                         <Link href="/privacy" className="hover:text-foreground">

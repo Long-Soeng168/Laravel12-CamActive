@@ -2,9 +2,9 @@ import MyNoData from '@/components/my-no-data';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import useTranslation from '@/hooks/use-translation';
 import { Link, usePage } from '@inertiajs/react';
-import CamActiveLayout from '../layouts/CamActiveLayout';
+import CamActiveLayout from './layouts/CamActiveLayout';
 
-const Show = () => {
+const WhyParterWithUsShow = () => {
     const { item_show, relate_items } = usePage().props;
     const { t, currentLocale } = useTranslation();
 
@@ -76,4 +76,4 @@ const Show = () => {
     );
 };
 
-export default Show;
+export default WhyParterWithUsShow;

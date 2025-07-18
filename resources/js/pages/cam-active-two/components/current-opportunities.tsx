@@ -6,6 +6,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Link } from '@inertiajs/react';
 import { PaperclipIcon } from 'lucide-react';
+import CardWithButton from './card-with-button';
 import HowToApply from './how-to-apply';
 
 const data = [
@@ -255,6 +256,7 @@ const CurrentOpportunities = () => {
                 </div>
             </div>
             <aside className="w-full shrink-0 lg:max-w-lg">
+                <CardWithButton />
                 <Card className="bg-primary/10 mt-12 flex flex-col gap-0 overflow-hidden rounded-xl border border-none border-gray-200 px-6 shadow-none transition sm:flex-col">
                     <CardContent className="flex flex-col justify-center p-0">
                         <h3 className="text-foreground line-clamp-2 text-lg leading-snug font-semibold tracking-tight lg:text-xl">

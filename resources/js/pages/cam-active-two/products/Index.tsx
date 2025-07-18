@@ -1,17 +1,18 @@
-import SectionHeader from '../components/section-header';
-import TailoredSolutionsCard from '../components/tailored-solutions-card';
+import { usePage } from '@inertiajs/react';
+import PageHeading from '../components/page-heading';
+import CardWithButton from '../components/card-with-button';
 import WhatWeDo from '../components/what-we-do';
 import CamActiveLayout from '../layouts/CamActiveLayout';
 
 const Solutions = () => {
+    const { products } = usePage().props;
+
     return (
         <CamActiveLayout>
-            <div className="bg-primary/10 text-primary mb-20 py-10">
-                <SectionHeader title="Our Products" subtitle="Empowering education. Streamlining logistics. Building partnerships." />
-            </div>
+            <PageHeading item={products} />
             <WhatWeDo />
             <div className="mb-20 flex justify-center">
-                <TailoredSolutionsCard />
+                <CardWithButton className='max-w-lg text-center' />
             </div>
             {/* <HeroTwo />
             <OurServices />

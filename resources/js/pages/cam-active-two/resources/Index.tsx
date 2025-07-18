@@ -6,6 +6,7 @@ import FeaturedMedia from '../components/featured-media';
 import LatestPosts from '../components/latest_posts';
 import SectionHeader from '../components/section-header';
 import CamActiveLayout from '../layouts/CamActiveLayout';
+import CardWithButton from '../components/card-with-button';
 
 const Index = () => {
     return (
@@ -52,6 +53,7 @@ const Index = () => {
                 <FeaturedMedia />
 
                 <div className="mx-auto max-w-screen-xl px-6">
+                    <CardWithButton />
                     <Card className="bg-primary/10 mt-8 flex flex-col gap-0 overflow-hidden rounded-xl border border-none border-gray-200 px-6 shadow-none transition sm:flex-col">
                         <CardContent className="flex flex-col justify-center p-0">
                             <h3 className="text-foreground line-clamp-2 text-lg leading-snug font-semibold tracking-tight lg:text-xl">

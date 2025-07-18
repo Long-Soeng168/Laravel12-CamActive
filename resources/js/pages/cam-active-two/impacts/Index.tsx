@@ -1,14 +1,15 @@
+import { usePage } from '@inertiajs/react';
 import ByTheNumbers from '../components/by-the-numbers';
 import SectionHeader from '../components/section-header';
 import StoryFromTheField from '../components/story-from-the-field';
 import CamActiveLayout from '../layouts/CamActiveLayout';
+import PageHeading from '../components/page-heading';
 
 const Impact = () => {
+    const { impact } = usePage().props;
     return (
         <CamActiveLayout>
-            <div className="bg-primary/10 py-10">
-                <SectionHeader title="Our Impact" subtitle="Real solutions. Lasting change." />
-            </div>
+            <PageHeading item={impact} />
             <ByTheNumbers />
             <div>
                 <StoryFromTheField />

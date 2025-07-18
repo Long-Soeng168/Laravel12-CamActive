@@ -1,61 +1,19 @@
+import { usePage } from '@inertiajs/react';
 import WhatWeDoCard from './what-we-do-card';
-const services = [
-    {
-        id: 1,
-        image: 'educations.png',
-        title: 'Educational Solutions',
-        description:
-            'From curriculum development to digital learning tools, we help schools, NGOs, and government bodies deliver quality education that works.',
-        long_description: `
-What we offer:
+import useTranslation from '@/hooks/use-translation';
 
-•	Curriculum design and teacher training
-•	Digital learning platforms and content
-•	Programme monitoring and evaluation
-•	Community-based educational initiatives
-
-“We don’t just deliver content—we co-create learning experiences that stick.”
-`,
-    },
-    {
-        id: 2,
-        image: 'logistics.png',
-        title: 'Logistics Support',
-        description: 'We streamline supply chains for educational programs—getting the right materials to the right places, on time and on budget.',
-        long_description: `
-Our logistics services cover:
-
-•	Procurement and supply chain management
-•	Warehousing and inventory tracking
-•	Last-mile delivery to schools and communities
-•	Real-time reporting and logistics dashboards
-
-“From textbooks to tablets, we move what matters.”
-`,
-    },
-    {
-        id: 3,
-        image: 'partners.png',
-        title: 'Partnership Building',
-        description: 'We connect stakeholders across sectors to collaborate, innovate, and scale impact.',
-        long_description: `
-We help you:
-•	Identify and engage with aligned partners
-•	Design and manage joint initiatives
-•	Facilitate workshops and knowledge-sharing events
-•	Build networks that last
-
-“We’re not just connectors—we’re collaborators.”
-`,
-    },
-];
 
 const WhatWeDo = () => {
+    const { products } = usePage().props;     
+
+    if (!products) {
+        return null;
+    }
     return (
         <section className="relative pb-20">
             <div className="mx-auto max-w-screen-xl space-y-8 text-center">
                 <div className="grid grid-cols-1 gap-4 px-4 sm:grid-cols-2 lg:grid-cols-3">
-                    {services.map((item) => (
+                    {products.children?.map((item) => (
                         <WhatWeDoCard item={item} />
                     ))}
                     {/* <Card

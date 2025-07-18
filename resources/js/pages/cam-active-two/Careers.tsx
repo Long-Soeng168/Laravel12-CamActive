@@ -1,14 +1,15 @@
+import { usePage } from '@inertiajs/react';
 import CurrentOpportunities from './components/current-opportunities';
+import PageHeading from './components/page-heading';
 import SectionHeader from './components/section-header';
 import WhyWorkWithUs from './components/why-work-with-us';
 import CamActiveLayout from './layouts/CamActiveLayout';
 
 const Careers = () => {
+    const { career } = usePage().props;
     return (
         <CamActiveLayout>
-            <div className="bg-primary/10 py-10">
-                <SectionHeader title="Careers at Cam-Active" subtitle="Join us in creating impact through education and logistics." />
-            </div>
+            <PageHeading item={career} />
             <WhyWorkWithUs />
             <div>
                 <CurrentOpportunities />
