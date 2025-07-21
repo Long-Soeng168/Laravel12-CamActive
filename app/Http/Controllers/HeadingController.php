@@ -73,6 +73,12 @@ class HeadingController extends Controller implements HasMiddleware
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'title_kh' => 'nullable|string|max:255',
+            'button1_title' => 'nullable|string|max:255',
+            'button1_title_kh' => 'nullable|string|max:255',
+            'button2_title' => 'nullable|string|max:255',
+            'button2_title_kh' => 'nullable|string|max:255',
+            'button1_link' => 'nullable|string|max:255',
+            'button2_link' => 'nullable|string|max:255',
             'code' => 'required|string|max:255|unique:headings,code',
             'short_description' => 'nullable|string|max:255',
             'short_description_kh' => 'nullable|string|max:255',
@@ -82,12 +88,12 @@ class HeadingController extends Controller implements HasMiddleware
         $validated['created_by'] = $request->user()->id;
         $validated['updated_by'] = $request->user()->id;
 
-      
+
         foreach ($validated as $key => $value) {
-    if ($value === '') {
-        $validated[$key] = null;
-    }
-}
+            if ($value === '') {
+                $validated[$key] = null;
+            }
+        }
 
         Heading::create($validated);
 
@@ -118,7 +124,13 @@ class HeadingController extends Controller implements HasMiddleware
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'title_kh' => 'nullable|string|max:255',
-            'code' => 'required|string|max:255|unique:headings,code,'. $heading->id,
+            'button1_title' => 'nullable|string|max:255',
+            'button1_title_kh' => 'nullable|string|max:255',
+            'button2_title' => 'nullable|string|max:255',
+            'button2_title_kh' => 'nullable|string|max:255',
+            'button1_link' => 'nullable|string|max:255',
+            'button2_link' => 'nullable|string|max:255',
+            'code' => 'required|string|max:255|unique:headings,code,' . $heading->id,
             'short_description' => 'nullable|string|max:255',
             'short_description_kh' => 'nullable|string|max:255',
             'status' => 'nullable|string|in:active,inactive',
@@ -126,12 +138,12 @@ class HeadingController extends Controller implements HasMiddleware
 
         $validated['updated_by'] = $request->user()->id;
 
-      
+
         foreach ($validated as $key => $value) {
-    if ($value === '') {
-        $validated[$key] = null;
-    }
-}
+            if ($value === '') {
+                $validated[$key] = null;
+            }
+        }
         $heading->update($validated);
 
         return redirect()->back()->with('success', 'Heading created successfully!');
@@ -156,7 +168,7 @@ class HeadingController extends Controller implements HasMiddleware
      */
     public function destroy(Heading $heading)
     {
-        
+
         $heading->delete();
         return redirect()->back()->with('success', 'Position deleted successfully.');
     }

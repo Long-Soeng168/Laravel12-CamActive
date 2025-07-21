@@ -81,23 +81,6 @@ const StoryFromTheField = () => {
                     ))}
                 </div>
                 <CardWithButton className='mt-8' />
-                <Card className="bg-primary/10 mt-8 flex flex-col gap-0 overflow-hidden rounded-xl border border-none border-gray-200 px-6 shadow-none transition sm:flex-col">
-                    <CardContent className="flex flex-col justify-center p-0">
-                        <h3 className="text-foreground line-clamp-2 text-lg leading-snug font-semibold tracking-tight lg:text-xl">What’s Next</h3>
-                        <p className="text-foreground mt-2 text-sm lg:text-base">
-                            We're expanding our reach, deepening our partnerships, and exploring new ways to use technology and collaboration to drive
-                            impact.
-                        </p>
-                    </CardContent>
-                    <CardFooter className="mt-4 gap-4 px-0">
-                        <Link href={`/contact`} prefetch>
-                            <Button>Partner With Us</Button>
-                        </Link>
-                        <Link href={`/careers`}>
-                            <Button variant="outline">Join Our Team</Button>
-                        </Link>
-                    </CardFooter>
-                </Card>
             </aside>
         </div>
     );

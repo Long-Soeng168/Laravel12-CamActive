@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\FrontPageController;
 
 use App\Http\Controllers\Controller;
+use App\Models\Career;
 use App\Models\Heading;
 use App\Models\Page;
+use App\Models\Post;
+use App\Models\PostCategory;
 use App\Models\Team;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -35,6 +38,11 @@ class CamActiveController extends Controller
             ->orderBy('order_index')
             ->first();
 
+        $latest_resources = Post::with('images')
+            ->where('status', 'active')
+            ->orderBy('id', 'desc')
+            ->limit(3)
+            ->get();
         // return $products;
 
         return Inertia::render('cam-active-two/Index', [
@@ -42,6 +50,7 @@ class CamActiveController extends Controller
             'products' => $products,
             'whyWorkWithUs' => $whyWorkWithUs,
             'whoWeWorkWith' => $whoWeWorkWith,
+            'latest_resources' => $latest_resources,
         ]);
     }
     public function products()
@@ -164,10 +173,15 @@ class CamActiveController extends Controller
             ->where('status', 'active')
             ->first();
 
+        $opportunities = Career::where('status', 'active')
+            ->orderBy('id', 'desc')
+            ->get();
+        // return $opportunities;
         return Inertia::render('cam-active-two/Careers', [
             'career' => $career,
             'whyWorkWithUs' => $whyWorkWithUs,
             'heading1' => $heading1,
+            'opportunities' => $opportunities,
         ]);
     }
     public function resources()
@@ -176,8 +190,39 @@ class CamActiveController extends Controller
             ->where('status', 'active')
             ->first();
 
+        $categories_with_posts = PostCategory::with(['posts' => function ($subQuery) {
+            $subQuery->with('images')->where('status', 'active')->orderBy('id', 'desc')->limit(3);
+        }])->where('CODE', '!=', 'MEDIAS')->where('status', 'active')->orderBy('order_index')->get();
+
+        $medias = PostCategory::with(['posts' => function ($subQuery) {
+            $subQuery->with('images')->where('status', 'active')->orderBy('id', 'desc')->limit(10);
+        }])->where('CODE', '=', 'MEDIAS')->where('status', 'active')->orderBy('order_index')->first();
+
+        $post_categories = PostCategory::where('status', 'active')->orderBy('order_index')->get();
+
+        // return $medias;
         return Inertia::render('cam-active-two/resources/Index', [
             'heading1' => $heading1,
+            'categories_with_posts' => $categories_with_posts,
+            'medias' => $medias,
+            'post_categories' => $post_categories,
+        ]);
+    }
+    public function resources_show(Post $post)
+    {
+        $relate_items = Post::where('category_code', $post->category_code)
+            ->with('images')
+            ->where('status', 'active')
+            ->where('id', '!=', $post->id)
+            ->get();
+        $post_categories = PostCategory::where('status', 'active')->orderBy('order_index')->get();
+
+        // return $relate_items;
+
+        return Inertia::render('cam-active-two/resources/Show', [
+            'relate_items' => $relate_items,
+            'post_categories' => $post_categories,
+            'item_show' => $post->load('images'),
         ]);
     }
     public function about()

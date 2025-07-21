@@ -1,12 +1,13 @@
+import MyNoData from '@/components/my-no-data';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { Link } from '@inertiajs/react';
+import useTranslation from '@/hooks/use-translation';
+import { Link, usePage } from '@inertiajs/react';
 import { PaperclipIcon } from 'lucide-react';
-import CardWithButton from './card-with-button';
 import HowToApply from './how-to-apply';
 
 const data = [
@@ -33,13 +34,15 @@ const data = [
 ];
 
 const CurrentOpportunities = () => {
+    const { opportunities, heading1 } = usePage().props;
+    const { t, currentLocale } = useTranslation();
     return (
         <div className="mx-auto mb-20 flex max-w-screen-xl flex-col items-start gap-12 px-6 lg:flex-row">
             <div>
-                <h2 className="text-3xl font-bold tracking-tight">Current Opportunities</h2>
+                <h2 className="text-3xl font-bold tracking-tight">{t('Current Opportunities')}</h2>
 
                 <div className="mt-4 space-y-4">
-                    {data.map((item) => (
+                    {opportunities.map((item) => (
                         <Dialog>
                             <DialogTrigger asChild>
                                 <Card
@@ -52,11 +55,15 @@ const CurrentOpportunities = () => {
 
                                     <CardContent className="flex flex-col justify-center p-0">
                                         <h3 className="text-foreground line-clamp-2 text-lg leading-snug font-semibold tracking-tight lg:text-xl">
-                                            {item.title}
+                                            {currentLocale === 'kh' ? (item?.name_kh ?? item?.name) : item?.name}
                                         </h3>
-                                        <p className="text-foreground mt-2 line-clamp-3 text-xs lg:text-sm">{item.short_description}</p>
+                                        <p className="text-foreground mt-2 line-clamp-3 text-xs lg:text-sm">
+                                            {currentLocale === 'kh'
+                                                ? (item?.short_description_kh ?? item?.short_description)
+                                                : item?.short_description}
+                                        </p>
                                     </CardContent>
-                                    <Button size="sm">Apply Now</Button>
+                                    <Button size="sm">{t('Apply Now')}</Button>
                                 </Card>
                             </DialogTrigger>
                             <DialogContent
@@ -69,108 +76,27 @@ const CurrentOpportunities = () => {
                                 </DialogHeader>
                                 <div>
                                     <div>
-                                        <h1 className="p-4 pb-0 text-xl font-bold">
-                                            Position: <span className="text-primary">ELV Design Engineer</span>
+                                        <h1 className="text-primary p-4 pb-0 text-xl font-bold">
+                                            {currentLocale === 'kh' ? (item?.name_kh ?? item?.name) : item?.name}
                                         </h1>
                                     </div>
-                                    <div className="text-foreground flex flex-col gap-4 p-2 lg:flex-row lg:p-4">
-                                        <div className="w-full lg:flex-1">
-                                            <div className="p-2 text-sm">
-                                                <p>
-                                                    Location: <strong>Phnom Penh, Cambodia</strong>
-                                                </p>
-                                                <p>
-                                                    Industry: <strong>Technology (ELV Systems, Security & AV Solutions)</strong>
-                                                </p>
-                                                <p>
-                                                    Budget: <strong>$0,000.00</strong>
-                                                </p>
-                                            </div>
-                                            <div className="p-2 text-sm">
-                                                <p className="text-lg font-bold">QUALIFICATIONS</p>
-                                                <div>
-                                                    <strong>Language Proficiency:</strong>
-                                                    <p>• Preferably a local candidate with experience in Cambodia's ELV industry.</p>
+                                    <div className="text-foreground flex flex-col justify-between gap-4 p-2 lg:flex-row lg:p-4">
+                                        <div className="w-full">
+                                            {item?.qualification ? (
+                                                <div
+                                                    className="prose max-w-none"
+                                                    dangerouslySetInnerHTML={{
+                                                        __html: item?.qualification,
+                                                    }}
+                                                ></div>
+                                            ) : (
+                                                <div className="flex w-full justify-center">
+                                                    <MyNoData />
                                                 </div>
-                                                <div>
-                                                    <strong>Education:</strong>
-                                                    <p>
-                                                        • Degree in Electrical Engineering or a related field (Computer Engineering, AV, IT, or Sound
-                                                        System Design).
-                                                    </p>
-                                                </div>
-                                                <div>
-                                                    <strong>Experience:</strong>
-                                                    <p>• Minimum 5 years experience in designing one or more ELV systems is an asset.</p>
-                                                </div>
-                                            </div>
-                                            <div className="p-2 text-sm">
-                                                <p className="text-lg font-bold">SKILLS:</p>
-                                                <div>
-                                                    <strong>Language Proficiency:</strong>
-                                                    <ul>
-                                                        <li>• Proficiency in AutoCAD for system drawings and design.</li>
-                                                        <li>• Strong knowledge of Microsoft Office Suite.</li>
-                                                        <li>• Ability to speak, read, and write in English and Khmer.</li>
-                                                        <li>• Excellent communication and problem-solving skills.</li>
-                                                        <li>• Quick learner with a strong work ethic and integrity.</li>
-                                                        <li>• Willingness to work overtime or on weekends based on project requirements.</li>
-                                                        <li>• Detail-oriented and able to follow company procedures.</li>
-                                                        <li>• Passion for continuous learning and upgrading technical skills.</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div className="p-2 text-sm">
-                                                <p className="text-lg font-bold">DUTIES & RESPONSIBILITIES:</p>
-                                                <div>
-                                                    <strong>Language Proficiency:</strong>
-                                                    <ol>
-                                                        <li>
-                                                            1. System Design & Documentation
-                                                            <ul>
-                                                                <li>• Design and prepare BOQ and technical drawings for ELV systems.</li>
-                                                                <li>
-                                                                    • Ensure ELV system designs meet industry standards, safety regulations, and
-                                                                    project specifications.
-                                                                </li>
-                                                                <li>
-                                                                    • Maintain accurate documentation and ensure proper filing of all design records.
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                        <li>
-                                                            2. Project Coordination & Technical Support
-                                                            <ul>
-                                                                <li>
-                                                                    • Collaborate with the purchasing team to source necessary components for ELV
-                                                                    installations.
-                                                                </li>
-                                                                <li>
-                                                                    • Provide technical guidance to sales, marketing, and installation teams when
-                                                                    needed.
-                                                                </li>
-                                                                <li>
-                                                                    • Conduct site inspections to verify that installations align with design plans.
-                                                                </li>
-                                                                <li>• Assist in troubleshooting and resolving ELV system issues.</li>
-                                                            </ul>
-                                                        </li>
-                                                        <li>
-                                                            3. Knowledge Transfer & Team Training
-                                                            <ul>
-                                                                <li>• Design and prepare BOQ and technical drawings for ELV systems.</li>
-                                                                <li>• Train installation teams on system designs and technical processes.</li>
-                                                                <li>
-                                                                    • Stay updated on the latest ELV technologies and industry trends to enhance
-                                                                    project efficiency.
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                    </ol>
-                                                </div>
-                                            </div>
+                                            )}
                                         </div>
-                                        <div className="w-full space-y-4 lg:w-md">
+
+                                        <div className="w-full shrink-0 space-y-4 lg:w-md">
                                             {/* <div className="w-full max-w-full">
                                                     <Label htmlFor="name">Name</Label>
                                                     <Input
@@ -256,23 +182,22 @@ const CurrentOpportunities = () => {
                 </div>
             </div>
             <aside className="w-full shrink-0 lg:max-w-lg">
-                <CardWithButton />
                 <Card className="bg-primary/10 mt-12 flex flex-col gap-0 overflow-hidden rounded-xl border border-none border-gray-200 px-6 shadow-none transition sm:flex-col">
                     <CardContent className="flex flex-col justify-center p-0">
                         <h3 className="text-foreground line-clamp-2 text-lg leading-snug font-semibold tracking-tight lg:text-xl">
-                            Internships & Volunteering
+                            {currentLocale === 'kh' ? (heading1?.title_kh ?? heading1?.title) : heading1?.title}
                         </h3>
                         <p className="text-foreground mt-2 text-sm lg:text-base">
-                            We offer hands-on opportunities for students and professionals to gain experience while contributing to meaningful work.
+                            {currentLocale === 'kh' ? (heading1?.short_description_kh ?? heading1?.short_description) : heading1?.short_description}
                         </p>
                     </CardContent>
                     <CardFooter className="mt-4 gap-4 px-0">
                         <Link href={`#`} prefetch>
-                            <Button>Apply Now</Button>
+                            <Button>{t('Apply Now')}</Button>
                         </Link>
                     </CardFooter>
                 </Card>
-                <h3 className="mt-10 text-3xl font-bold tracking-tight">How to Apply</h3>
+                <h3 className="mt-10 text-3xl font-bold tracking-tight">{t('How to Apply')}</h3>
                 <HowToApply />
             </aside>
         </div>

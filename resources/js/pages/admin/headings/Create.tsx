@@ -1,16 +1,14 @@
 import MyDialogCancelButton from '@/components/my-dialog-cancel-button';
 import { AutosizeTextarea } from '@/components/ui/autosize-textarea';
 import { Button } from '@/components/ui/button';
-import { FileInput, FileUploader, FileUploaderContent, FileUploaderItem } from '@/components/ui/file-upload';
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { ProgressWithValue } from '@/components/ui/progress-with-value';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import useTranslation from '@/hooks/use-translation';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm as inertiaUseForm } from '@inertiajs/react';
-import { CloudUpload, Loader, Paperclip } from 'lucide-react';
-import { useState } from 'react';
+import { Loader } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import * as z from 'zod';
@@ -20,6 +18,12 @@ const formSchema = z.object({
     title_kh: z.string().max(255).optional(),
     code: z.string().min(1).max(255),
     status: z.string().max(255).optional(),
+    button1_title: z.string().max(255).optional(),
+    button1_title_kh: z.string().max(255).optional(),
+    button1_link: z.string().max(255).optional(), // Assuming link is also a string with max 255 chars
+    button2_title: z.string().max(255).optional(),
+    button2_title_kh: z.string().max(255).optional(),
+    button2_link: z.string().max(255).optional(), // Assuming link is also a string with max 255 chars
     short_description: z.string().max(500).optional(),
     short_description_kh: z.string().max(500).optional(),
 });
@@ -35,7 +39,7 @@ export default function Create({
 }) {
     // ===== Start Our Code =====
     const { t } = useTranslation();
-   
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -115,7 +119,7 @@ export default function Create({
                                 <FormItem>
                                     <FormLabel>{t('Title')}</FormLabel>
                                     <FormControl>
-                                         <AutosizeTextarea placeholder={t("Title")} type="text" {...field} />
+                                        <AutosizeTextarea placeholder={t('Title')} type="text" {...field} />
                                     </FormControl>
                                     <FormMessage>{errors.title && <div>{errors.title}</div>}</FormMessage>
                                 </FormItem>
@@ -131,7 +135,7 @@ export default function Create({
                                 <FormItem>
                                     <FormLabel>{t('Title Khmer')}</FormLabel>
                                     <FormControl>
-                                       <AutosizeTextarea placeholder={t("Title Khmer")} type="text" {...field} />
+                                        <AutosizeTextarea placeholder={t('Title Khmer')} type="text" {...field} />
                                     </FormControl>
                                     <FormMessage>{errors.title_kh && <div>{errors.title_kh}</div>}</FormMessage>
                                 </FormItem>
@@ -189,7 +193,7 @@ export default function Create({
                         <FormItem>
                             <FormLabel>{t('Short Description')}</FormLabel>
                             <FormControl>
-                                <AutosizeTextarea placeholder={t("Short Description")} className="resize-none" {...field} />
+                                <AutosizeTextarea placeholder={t('Short Description')} className="resize-none" {...field} />
                             </FormControl>
                             <FormMessage>{errors.short_description && <div>{errors.short_description}</div>}</FormMessage>
                         </FormItem>
@@ -203,12 +207,110 @@ export default function Create({
                         <FormItem>
                             <FormLabel>{t('Short Description Khmer')}</FormLabel>
                             <FormControl>
-                                <AutosizeTextarea placeholder={t("Short Description Khmer")} className="resize-none" {...field} />
+                                <AutosizeTextarea placeholder={t('Short Description Khmer')} className="resize-none" {...field} />
                             </FormControl>
                             <FormMessage>{errors.short_description_kh && <div>{errors.short_description_kh}</div>}</FormMessage>
                         </FormItem>
                     )}
                 />
+
+                <div className="grid grid-cols-12 gap-4">
+                    <div className="col-span-6">
+                        <FormField
+                            control={form.control}
+                            name="button1_title"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>{t('Button 1 Title')}</FormLabel>
+                                    <FormControl>
+                                        <Input placeholder={t('Enter button 1 title')} {...field} />
+                                    </FormControl>
+                                    <FormMessage>{errors.button1_title && <div>{errors.button1_title.message}</div>}</FormMessage>
+                                </FormItem>
+                            )}
+                        />
+                    </div>
+
+                    <div className="col-span-6">
+                        <FormField
+                            control={form.control}
+                            name="button1_title_kh"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>{t('Button 1 Title (Khmer)')}</FormLabel>
+                                    <FormControl>
+                                        <Input placeholder={t('Enter button 1 title in Khmer')} {...field} />
+                                    </FormControl>
+                                    <FormMessage>{errors.button1_title_kh && <div>{errors.button1_title_kh.message}</div>}</FormMessage>
+                                </FormItem>
+                            )}
+                        />
+                    </div>
+
+                    <div className="col-span-12">
+                        <FormField
+                            control={form.control}
+                            name="button1_link"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>{t('Button 1 Link')}</FormLabel>
+                                    <FormControl>
+                                        <Input placeholder={t('Enter button 1 link')} {...field} />
+                                    </FormControl>
+                                    <FormMessage>{errors.button1_link && <div>{errors.button1_link.message}</div>}</FormMessage>
+                                </FormItem>
+                            )}
+                        />
+                    </div>
+
+                    <div className="col-span-6">
+                        <FormField
+                            control={form.control}
+                            name="button2_title"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>{t('Button 2 Title')}</FormLabel>
+                                    <FormControl>
+                                        <Input placeholder={t('Enter button 2 title')} {...field} />
+                                    </FormControl>
+                                    <FormMessage>{errors.button2_title && <div>{errors.button2_title.message}</div>}</FormMessage>
+                                </FormItem>
+                            )}
+                        />
+                    </div>
+
+                    <div className="col-span-6">
+                        <FormField
+                            control={form.control}
+                            name="button2_title_kh"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>{t('Button 2 Title (Khmer)')}</FormLabel>
+                                    <FormControl>
+                                        <Input placeholder={t('Enter button 2 title in Khmer')} {...field} />
+                                    </FormControl>
+                                    <FormMessage>{errors.button2_title_kh && <div>{errors.button2_title_kh.message}</div>}</FormMessage>
+                                </FormItem>
+                            )}
+                        />
+                    </div>
+
+                    <div className="col-span-12">
+                        <FormField
+                            control={form.control}
+                            name="button2_link"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>{t('Button 2 Link')}</FormLabel>
+                                    <FormControl>
+                                        <Input placeholder={t('Enter button 2 link')} {...field} />
+                                    </FormControl>
+                                    <FormMessage>{errors.button2_link && <div>{errors.button2_link.message}</div>}</FormMessage>
+                                </FormItem>
+                            )}
+                        />
+                    </div>
+                </div>
                 {progress && <ProgressWithValue value={progress.percentage} position="start" />}
                 {setIsOpen && <MyDialogCancelButton onClick={() => setIsOpen(false)} />}
 
@@ -219,7 +321,7 @@ export default function Create({
                                 <Loader />
                             </span>
                         )}
-                       {processing ? t('Submitting') : t('Submit')}
+                        {processing ? t('Submitting') : t('Submit')}
                     </Button>
                 )}
             </form>

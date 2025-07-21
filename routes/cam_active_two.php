@@ -17,14 +17,13 @@ Route::get('//who-we-work-with/{page}', [CamActiveController::class, 'why_partne
 Route::get('/careers', [CamActiveController::class, 'careers']);
 Route::get('/about', [CamActiveController::class, 'about']);
 Route::get('/contact', [CamActiveController::class, 'contact']);
+
 Route::get('/resources', [CamActiveController::class, 'resources']);
+Route::get('/resources/{post}', [CamActiveController::class, 'resources_show']);
 
 
 Route::get('/search_resources', function () {
     return Inertia::render('cam-active-two/resources/Search-Resources');
-});
-Route::get('/resources/{id}', function () {
-    return Inertia::render('cam-active-two/resources/Show');
 });
 
 
