@@ -30,6 +30,7 @@ const formSchema = z.object({
     copyright: z.string().optional(),
     copyright_kh: z.string().optional(),
     image: z.string().optional(),
+    image_dark_mode: z.string().optional(),
 });
 
 export default function Create() {
@@ -37,6 +38,7 @@ export default function Create() {
     const { t } = useTranslation();
 
     const [files, setFiles] = useState<File[] | null>(null);
+    const [files_image_dark_mode, setFiles_image_dark_mode] = useState<File[] | null>(null);
     const { editData } = usePage().props;
     const dropZoneConfig = {
         maxFiles: 100,
@@ -81,12 +83,14 @@ export default function Create() {
             transform(() => ({
                 ...values,
                 image: files ? files[0] : null,
+                image_dark_mode: files_image_dark_mode ? files_image_dark_mode[0] : null,
             }));
             if (editData?.id) {
                 post('/admin/application_info/' + editData.id + '/update', {
                     preserveScroll: true,
                     onSuccess: (page) => {
                         setFiles(null);
+                        setFiles_image_dark_mode(null);
                         if (page.props.flash?.success) {
                             toast.success('Success', {
                                 description: page.props.flash.success,
@@ -104,6 +108,7 @@ export default function Create() {
                     preserveScroll: true,
                     onSuccess: (page) => {
                         setFiles(null);
+                        setFiles_image_dark_mode(null);
                         if (page.props.flash?.success) {
                             toast.success('Success', {
                                 description: page.props.flash.success,
@@ -396,6 +401,69 @@ export default function Create() {
                                             <img
                                                 src={'/assets/images/application_info/thumb/' + editData?.image}
                                                 alt={editData?.image}
+                                                className="h-full w-full object-contain"
+                                            />
+                                        </span>
+                                    </div>
+                                </div>
+                            )}
+                        </FormItem>
+                    )}
+                />
+                <FormField
+                    control={form.control}
+                    name="image_dark_mode"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>{t('Select Logo For Dark Mode')}</FormLabel>
+                            <FormControl>
+                                <FileUploader
+                                    value={files_image_dark_mode}
+                                    onValueChange={setFiles_image_dark_mode}
+                                    dropzoneOptions={dropZoneConfig}
+                                    className="relative p-1"
+                                >
+                                    <FileInput id="fileInput" className="outline-1 outline-slate-500 outline-dashed">
+                                        <div className="flex w-full flex-col items-center justify-center p-8">
+                                            <CloudUpload className="h-10 w-10 text-gray-500" />
+                                            <p className="mb-1 text-sm text-gray-500 dark:text-gray-400">
+                                                <span className="font-semibold">{t('Click to upload')}</span>
+                                                &nbsp; {t('or drag and drop')}
+                                            </p>
+                                            <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF</p>
+                                        </div>
+                                    </FileInput>
+                                    <FileUploaderContent className="grid w-full grid-cols-3 gap-2 rounded-md lg:grid-cols-4">
+                                        {files_image_dark_mode?.map((file, i) => (
+                                            <FileUploaderItem
+                                                key={i}
+                                                index={i}
+                                                className="bg-background aspect-square h-auto w-full overflow-hidden rounded-md border p-0"
+                                                aria-roledescription={`file ${i + 1} containing ${file.name}`}
+                                            >
+                                                <img src={URL.createObjectURL(file)} alt={file.name} className="h-full w-full object-contain" />
+                                            </FileUploaderItem>
+                                            // <FileUploaderItem key={i} index={i}>
+                                            //     <Paperclip className="h-4 w-4 stroke-current" />
+                                            //     <span>{file.name}</span>
+                                            // </FileUploaderItem>
+                                        ))}
+                                    </FileUploaderContent>
+                                </FileUploader>
+                            </FormControl>
+                            <FormMessage>{errors.image_dark_mode && <div>{errors.image_dark_mode}</div>}</FormMessage>
+                            {/* Initial Image */}
+                            {editData?.image_dark_mode && (
+                                <div className="mt-4 p-1">
+                                    <FormDescription className="mb-2">{t('Uploaded Logo')}</FormDescription>
+                                    <div className="grid w-full grid-cols-3 gap-2 rounded-md lg:grid-cols-5">
+                                        <span
+                                            key={editData?.image_dark_mode}
+                                            className="group bg-background relative aspect-square h-auto w-full overflow-hidden rounded-md border p-0"
+                                        >
+                                            <img
+                                                src={'/assets/images/application_info/thumb/' + editData?.image_dark_mode}
+                                                alt={editData?.image_dark_mode}
                                                 className="h-full w-full object-contain"
                                             />
                                         </span>

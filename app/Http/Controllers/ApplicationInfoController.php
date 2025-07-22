@@ -45,9 +45,11 @@ class ApplicationInfoController extends Controller implements HasMiddleware
             'copyright' => 'nullable|string|max:255',
             'copyright_kh' => 'nullable|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp,svg|max:2048',
+            'image_dark_mode' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp,svg|max:2048',
         ]);
 
         $image_file = $request->file('image');
+        $image_file_image_dark_mode = $request->file('image_dark_mode');
         unset($validated['image']);
 
         foreach ($validated as $key => $value) {
@@ -64,6 +66,14 @@ class ApplicationInfoController extends Controller implements HasMiddleware
                 return redirect()->back()->with('error', 'Failed to upload image: ' . $e->getMessage());
             }
         }
+        if ($image_file_image_dark_mode) {
+            try {
+                $created_image_name = ImageHelper::uploadAndResizeImageWebp($image_file, 'assets/images/application_info', 600);
+                $validated['image_dark_mode'] = $created_image_name;
+            } catch (\Exception $e) {
+                return redirect()->back()->with('error', 'Failed to upload image: ' . $e->getMessage());
+            }
+        }
 
         ApplicationInfo::create($validated);
 
@@ -71,6 +81,7 @@ class ApplicationInfoController extends Controller implements HasMiddleware
     }
     public function update(Request $request, ApplicationInfo $application_info)
     {
+        // dd($request->all());
         $validated = $request->validate([
             'address' => 'nullable|string|max:500',
             'name' => 'required|string|max:500',
@@ -87,9 +98,11 @@ class ApplicationInfoController extends Controller implements HasMiddleware
             'copyright' => 'nullable|string|max:255',
             'copyright_kh' => 'nullable|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp,svg|max:2048',
+            'image_dark_mode' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp,svg|max:2048',
         ]);
 
         $image_file = $request->file('image');
+        $image_file_image_dark_mode = $request->file('image_dark_mode');
         unset($validated['image']);
 
         foreach ($validated as $key => $value) {
@@ -109,7 +122,19 @@ class ApplicationInfoController extends Controller implements HasMiddleware
             } catch (\Exception $e) {
                 return redirect()->back()->with('error', 'Failed to upload image: ' . $e->getMessage());
             }
-        }
+        } 
+        if ($image_file_image_dark_mode) {
+            try {
+                $created_image_name = ImageHelper::uploadAndResizeImageWebp($image_file_image_dark_mode, 'assets/images/application_info', 600);
+                $validated['image_dark_mode'] = $created_image_name;
+
+                if ($application_info->image_dark_mode && $created_image_name) {
+                    ImageHelper::deleteImage($application_info->image_dark_mode, 'assets/images/application_info');
+                }
+            } catch (\Exception $e) {
+                return redirect()->back()->with('error', 'Failed to upload image: ' . $e->getMessage());
+            }
+        } 
 
         $application_info->update($validated);
 
