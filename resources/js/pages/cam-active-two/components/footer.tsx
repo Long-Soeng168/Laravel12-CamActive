@@ -4,7 +4,8 @@ import { Link, usePage } from '@inertiajs/react';
 import Social from './social';
 
 const Footer = () => {
-    const { pages_menus, application_info } = usePage().props;
+    const { pages_menus, application_info, pages_menus_bottoms } = usePage().props;
+    console.log(pages_menus_bottoms);
     const { t, currentLocale } = useTranslation();
     return (
         <footer>
@@ -116,13 +117,14 @@ const Footer = () => {
                     </span>
 
                     <div className="text-muted-foreground flex justify-center space-x-6 text-sm">
-                        <Link href="/privacy" className="hover:text-foreground">
-                            Privacy Policy
-                        </Link>
-                        <span>|</span>
-                        <Link href="/terms" className="hover:text-foreground">
-                            Terms of Use
-                        </Link>
+                        {pages_menus_bottoms?.map((item, index) => (
+                            <>
+                                {index > 0 && <span>|</span>}
+                                <Link href={`/detail_page/${item.id}`} className="hover:text-foreground">
+                                    {currentLocale === 'kh' ? item?.title_kh || item?.title : item?.title}
+                                </Link>
+                            </>
+                        ))}
                     </div>
                 </div>
 

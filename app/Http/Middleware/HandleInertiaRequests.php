@@ -90,6 +90,10 @@ class HandleInertiaRequests extends Middleware
                     ->where('status', 'active')
                     ->first(['id', 'code', 'title', 'title_kh']),
             ],
+            'pages_menus_bottoms' => Page::where('position_code', 'BOTTOM-NAVIGATION')
+                ->where('status', 'active')
+                ->select(['id', 'code', 'title', 'title_kh'])
+                ->get(),
             // End Cam Active
 
             'flash' => [

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FrontPageController\CamActiveController;
+use App\Models\Page;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -24,10 +25,12 @@ Route::get('/resources/{post}', [CamActiveController::class, 'resources_show']);
 
 Route::post('/submit_message', [CamActiveController::class, 'submit_message']);
 Route::post('/submit_career', [CamActiveController::class, 'submit_career']);
- 
 
-Route::get('/privacy', function () {
-    return Inertia::render('cam-active-two/pages/Show');
+
+Route::get('/detail_page/{page}', function (Page $page) {
+    return Inertia::render('cam-active-two/pages/Show', [
+        'item_show' => $page,
+    ]);
 });
 Route::get('/terms', function () {
     return Inertia::render('cam-active-two/pages/Show');
