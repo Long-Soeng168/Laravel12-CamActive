@@ -5,10 +5,11 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { PaperclipIcon } from 'lucide-react';
 import useTranslation from '@/hooks/use-translation';
 import { Link, usePage } from '@inertiajs/react';
-import { PaperclipIcon } from 'lucide-react';
 import HowToApply from './how-to-apply';
+import CareerSubmitForm from './career-submit-form';
 
 const data = [
     {
@@ -43,7 +44,7 @@ const CurrentOpportunities = () => {
 
                 <div className="mt-4 space-y-4">
                     {opportunities.map((item) => (
-                        <Dialog>
+                        <Dialog key={item.id}>
                             <DialogTrigger asChild>
                                 <Card
                                     key={item.id}
@@ -96,84 +97,7 @@ const CurrentOpportunities = () => {
                                             )}
                                         </div>
 
-                                        <div className="w-full shrink-0 space-y-4 lg:w-md">
-                                            {/* <div className="w-full max-w-full">
-                                                    <Label htmlFor="name">Name</Label>
-                                                    <Input
-                                                        id="name"
-                                                        type="name"
-                                                        placeholder="Name"
-                                                        className="text-foreground w-full max-w-full rounded-none"
-                                                    />
-                                                </div> */}
-                                            <div className="w-full max-w-full">
-                                                <Label htmlFor="email">Position</Label>
-                                                <Input
-                                                    id="position"
-                                                    type="position"
-                                                    placeholder="Position"
-                                                    disabled
-                                                    value="ELV Design Engineer"
-                                                    className="text-foreground dark:bg-primary/20 w-full max-w-full rounded-none disabled:opacity-80"
-                                                />
-                                            </div>
-                                            <div className="w-full max-w-full">
-                                                <Label htmlFor="name">Name</Label>
-                                                <Input
-                                                    id="name"
-                                                    type="text"
-                                                    placeholder="Full Name"
-                                                    autoFocus={false}
-                                                    className="text-foreground dark:bg-primary/20 w-full max-w-full rounded-none"
-                                                />
-                                            </div>
-                                            <div className="w-full max-w-full">
-                                                <Label htmlFor="phone">Phone</Label>
-                                                <Input
-                                                    id="phone"
-                                                    type="text"
-                                                    placeholder="Phone Number"
-                                                    autoFocus={false}
-                                                    className="text-foreground dark:bg-primary/20 w-full max-w-full rounded-none"
-                                                />
-                                            </div>
-                                            <div className="w-full max-w-full">
-                                                <Label htmlFor="email">Email</Label>
-                                                <Input
-                                                    id="email"
-                                                    type="email"
-                                                    placeholder="Email"
-                                                    autoFocus={false}
-                                                    className="text-foreground dark:bg-primary/20 w-full max-w-full rounded-none"
-                                                />
-                                            </div>
-                                            <div className="w-full max-w-full">
-                                                <Label htmlFor="message">Message</Label>
-                                                <Textarea
-                                                    id="message"
-                                                    placeholder="message"
-                                                    autoFocus={false}
-                                                    className="text-foreground dark:bg-primary/20 w-full max-w-full rounded-none"
-                                                />
-                                            </div>
-                                            {/* <div className="w-full max-w-full">
-                                                    <Label htmlFor="email">Phone number</Label>
-                                                    <Input
-                                                        id="phone"
-                                                        type="phone"
-                                                        placeholder="Phone"
-                                                        className="text-foreground w-full max-w-full rounded-none"
-                                                    />
-                                                </div> */}
-                                            <div className="flex w-full max-w-full justify-end gap-4">
-                                                <Button variant="secondary" className="rounded-none">
-                                                    <PaperclipIcon /> Attach CV
-                                                </Button>
-                                                <Button variant="secondary" className="rounded-none">
-                                                    Apply
-                                                </Button>
-                                            </div>
-                                        </div>
+                                       <CareerSubmitForm item={item} />
                                     </div>
                                 </div>
                             </DialogContent>
@@ -192,13 +116,13 @@ const CurrentOpportunities = () => {
                         </p>
                     </CardContent>
                     <CardFooter className="mt-4 gap-4 px-0">
-                        <Link href={`#`} prefetch>
+                        <Link href={`#how-to-apply`} prefetch>
                             <Button>{t('Apply Now')}</Button>
                         </Link>
                     </CardFooter>
                 </Card>
-                <h3 className="mt-10 text-3xl font-bold tracking-tight">{t('How to Apply')}</h3>
-                <HowToApply />
+                <h3 id='how-to-apply' className="mt-10 scroll-mt-8 text-3xl font-bold tracking-tight">{t('How to Apply')}</h3>
+                <CareerSubmitForm />
             </aside>
         </div>
     );

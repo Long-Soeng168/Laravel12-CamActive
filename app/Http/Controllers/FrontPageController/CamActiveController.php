@@ -2,14 +2,21 @@
 
 namespace App\Http\Controllers\FrontPageController;
 
+use App\Helpers\FileHelper;
 use App\Http\Controllers\Controller;
+use App\Mail\CareerSubmissionMail;
+use App\Mail\SubmitMessageMail;
 use App\Models\Career;
+use App\Models\CareerSubmit;
 use App\Models\Heading;
+use App\Models\Message;
 use App\Models\Page;
 use App\Models\Post;
 use App\Models\PostCategory;
 use App\Models\Team;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Inertia\Inertia;
 
 class CamActiveController extends Controller
@@ -208,6 +215,42 @@ class CamActiveController extends Controller
             'post_categories' => $post_categories,
         ]);
     }
+    public function search_resources(Request $request)
+    {
+        $search = $request->input('search', '');
+        $sortBy = $request->input('sortBy', 'id');
+        $sortDirection = $request->input('sortDirection', 'desc');
+        $status = $request->input('status');
+        $category_code = $request->input('category_code');
+
+        $query = Post::query();
+
+        $query->with('created_by', 'updated_by', 'images', 'category', 'source_detail');
+
+        if ($status) {
+            $query->where('status', $status);
+        }
+        if ($category_code) {
+            $query->where('category_code', $category_code);
+        }
+        $query->orderBy($sortBy, $sortDirection);
+
+        if ($search) {
+            $query->where(function ($sub_query) use ($search) {
+                return $sub_query->where('title', 'LIKE', "%{$search}%")
+                    ->orWhere('title_kh', 'LIKE', "%{$search}%");
+            });
+        }
+
+        $tableData = $query->paginate(perPage: 7)->onEachSide(1);
+
+        $allCategories = PostCategory::where('status', 'active')->orderBy('order_index')->get();
+
+        return Inertia::render('cam-active-two/resources/Search-Resources', [
+            'tableData' => $tableData,
+            'allCategories' => $allCategories,
+        ]);
+    }
     public function resources_show(Post $post)
     {
         $relate_items = Post::where('category_code', $post->category_code)
@@ -281,5 +324,80 @@ class CamActiveController extends Controller
         return Inertia::render('cam-active-two/Contact', [
             'contact' => $contact,
         ]);
+    }
+
+    public function submit_message(Request $request)
+    {
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'required|string|max:50',
+            'subject' => 'required|string|max:255',
+            'message' => 'required|string|max:500',
+        ]);
+
+        try {
+            $to = config('app.MAIL_SALES_TEAM');
+            // dd($to);
+            Mail::to($to)->send(new SubmitMessageMail($data));
+
+            // If no exception was thrown, consider it sent
+            Message::create($data);
+
+            return redirect()->back()->with('success', 'Submit Successfully!');
+        } catch (\Exception $e) {
+            // Log the error for debugging
+            // \Log::error('Support request failed: ' . $e->getMessage());
+            // dd($e);
+            return redirect()->back()->with('error', 'Failed to submit. Please contact support directly.');
+        }
+    }
+
+    public function submit_career(Request $request)
+    {
+        // return ($request->all());
+
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'required|string|max:50',
+            'message' => 'nullable|string|max:500',
+            'career_id' => 'nullable|exists:careers,id',
+            'cv' => 'required|file|mimes:pdf,doc,docx|max:20480',
+        ]);
+
+        try {
+            DB::transaction(function () use ($data, $request) {
+                // Create DB record first
+
+                // Handle file upload if exists
+                if ($request->hasFile('cv')) {
+                    $created_file_name = FileHelper::uploadFile(
+                        $request->file('cv'),
+                        'assets/files/careers',
+                        true,
+                    );
+                    $data['cv_file'] = $created_file_name;
+                    unset($data['cv']);
+                    $file_path = public_path('/assets/files/careers/' . $created_file_name);
+                } else {
+                    $file_path = null;
+                }
+
+
+                $created_message = CareerSubmit::create($data);
+
+                // dd($created_message);
+                $to = config('app.MAIL_HR_TEAM');
+                Mail::to($to)->send(new CareerSubmissionMail($created_message->load('career'), $file_path));
+            });
+
+            return redirect()->back()->with('success', 'Submit Successfully!');
+        } catch (\Exception $e) {
+            // dd($e);
+
+            // Log::error('Career submission failed: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Failed to submit. Please contact support directly.');
+        }
     }
 }

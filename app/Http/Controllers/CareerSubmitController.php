@@ -63,7 +63,7 @@ class CareerSubmitController extends Controller implements HasMiddleware
             'phone'         => 'required|string|min:8|max:20',
             'email'         => 'nullable|email|max:255',
             'cv_file'       => 'nullable|file|mimes:pdf|max:12120', // assuming file upload for CV
-            'position_code' => 'required|string|exists:positions,code',
+            'position_code' => 'nullable|string|exists:positions,code',
             'career_id'     => 'required|integer|exists:careers,id',
         ]);
 

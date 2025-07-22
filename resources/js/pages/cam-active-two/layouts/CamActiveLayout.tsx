@@ -3,6 +3,7 @@ import { DribbbleIcon, GithubIcon, HomeIcon, TwitchIcon, TwitterIcon } from 'luc
 import { ReactNode } from 'react';
 import Footer from '../components/footer';
 import { Navbar } from '../components/navbar';
+import { Toaster } from '@/components/ui/sonner';
 
 const CamActiveLayout = ({ children }: { children: ReactNode }) => {
     return (
@@ -12,6 +13,7 @@ const CamActiveLayout = ({ children }: { children: ReactNode }) => {
             </header>
             <main className="min-h-[60vh]">{children}</main>
             <Footer />
+            <Toaster />
         </>
     );
 };

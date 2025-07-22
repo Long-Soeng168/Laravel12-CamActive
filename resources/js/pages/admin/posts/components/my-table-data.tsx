@@ -17,10 +17,14 @@ const MyTableData = () => {
     const hasPermission = usePermission();
 
     const { tableData } = usePage().props;
-    const queryParams = new URLSearchParams(window.location.search);
-    const currentPath = window.location.pathname; // Get dynamic path
+    // Get dynamic path
 
     const handleSort = (fieldName: string) => {
+        
+        if (typeof window === 'undefined') return;
+
+        const queryParams = new URLSearchParams(window.location.search);
+        const currentPath = window.location.pathname;
         if (fieldName === queryParams.get('sortBy')) {
             if (queryParams.get('sortDirection') === 'asc') {
                 queryParams.set('sortDirection', 'desc');

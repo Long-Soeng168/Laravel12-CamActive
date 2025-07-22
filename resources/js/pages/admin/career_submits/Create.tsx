@@ -51,7 +51,7 @@ export default function Create({
             name: editData?.name || '',
             phone: editData?.phone || '',
             email: editData?.email || '',
-            subject: editData?.subject || '',
+            subject: editData?.career?.name || '',
             message: editData?.message || '',
         },
     });
@@ -168,14 +168,14 @@ export default function Create({
                     <div className="col-span-12">
                         <FormField
                             control={form.control}
-                            name="subject"
+                            name="career"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>{t('Subject')}</FormLabel>
+                                    <FormLabel>{t('Career')}</FormLabel>
                                     <FormControl>
-                                        <Input placeholder={t('Subject')} type="text" {...field} />
+                                        <Input placeholder={t('Career')} type="text" {...field} />
                                     </FormControl>
-                                    <FormMessage>{errors.subject && <div>{errors.subject}</div>}</FormMessage>
+                                    <FormMessage>{errors.career && <div>{errors.career}</div>}</FormMessage>
                                 </FormItem>
                             )}
                         />

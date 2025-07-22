@@ -18,14 +18,13 @@ Route::get('/careers', [CamActiveController::class, 'careers']);
 Route::get('/about', [CamActiveController::class, 'about']);
 Route::get('/contact', [CamActiveController::class, 'contact']);
 
+Route::get('/search_resources', [CamActiveController::class, 'search_resources']);
 Route::get('/resources', [CamActiveController::class, 'resources']);
 Route::get('/resources/{post}', [CamActiveController::class, 'resources_show']);
 
-
-Route::get('/search_resources', function () {
-    return Inertia::render('cam-active-two/resources/Search-Resources');
-});
-
+Route::post('/submit_message', [CamActiveController::class, 'submit_message']);
+Route::post('/submit_career', [CamActiveController::class, 'submit_career']);
+ 
 
 Route::get('/privacy', function () {
     return Inertia::render('cam-active-two/pages/Show');
