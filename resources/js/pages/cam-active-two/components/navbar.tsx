@@ -25,7 +25,7 @@ export function Navbar({ className }: { className?: string }) {
                 />
                 <img
                     src={`/assets/images/application_info/${application_info?.image_dark_mode}`}
-                    className="h-14 rounded-full hidden dark:block"
+                    className="hidden h-14 rounded-full dark:block"
                     alt="Cam-Active Logo"
                 />
                 {/* <img src="/assets/cam-active/Camactive-Logo-Dark.png" className="hidden h-14 rounded-full dark:block" alt="Cam-Active Logo" /> */}
@@ -73,6 +73,10 @@ export function Navbar({ className }: { className?: string }) {
                                 {currentLocale == 'kh' ? pages_menus.contact.title_kh : pages_menus.contact.title}
                             </Link>
                         )}
+                    </div>
+                    <div className='flex gap-4'>
+                        <ToggleModeSwitch />
+                        <MySelectLanguageSwitch />
                     </div>
                 </SheetContent>
             </Sheet>
