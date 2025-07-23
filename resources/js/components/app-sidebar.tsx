@@ -86,12 +86,12 @@ export function AppSidebar() {
                     icon: ShapesIcon,
                     url: '/admin/item_body_types',
                 },
-                {
-                    title: t('View Counts'),
-                    permission: 'item view',
-                    icon: Tally5Icon,
-                    url: '/admin/item_view_counts',
-                },
+                // {
+                //     title: t('View Counts'),
+                //     permission: 'item view',
+                //     icon: Tally5Icon,
+                //     url: '/admin/item_view_counts',
+                // },
             ],
         },
         {
@@ -171,12 +171,12 @@ export function AppSidebar() {
                     icon: Layers2Icon,
                     url: '/admin/post_categories',
                 },
-                {
-                    title: t('View Counts'),
-                    permission: 'post view',
-                    icon: Tally5Icon,
-                    url: '/admin/post_view_counts',
-                },
+                // {
+                //     title: t('View Counts'),
+                //     permission: 'post view',
+                //     icon: Tally5Icon,
+                //     url: '/admin/post_view_counts',
+                // },
             ],
         },
         {
@@ -204,20 +204,20 @@ export function AppSidebar() {
             permission: 'message view',
             url: '/admin/messages',
             icon: MailsIcon,
-            subItems: [
-                {
-                    title: t('Messages'),
-                    permission: 'message view',
-                    url: '/admin/messages',
-                    icon: MailsIcon,
-                },
-                {
-                    title: t('Message Inquiries'),
-                    permission: 'message view',
-                    url: '/admin/message_inquiries',
-                    icon: MessageCircleQuestionIcon,
-                },
-            ],
+            // subItems: [
+            //     {
+            //         title: t('Messages'),
+            //         permission: 'message view',
+            //         url: '/admin/messages',
+            //         icon: MailsIcon,
+            //     },
+            //     {
+            //         title: t('Message Inquiries'),
+            //         permission: 'message view',
+            //         url: '/admin/message_inquiries',
+            //         icon: MessageCircleQuestionIcon,
+            //     },
+            // ],
         },
         {
             title: t('Teams and Careers'),
@@ -231,18 +231,18 @@ export function AppSidebar() {
                     url: '/admin/teams',
                     icon: SquareUserIcon,
                 },
-                {
-                    title: t('Team Categories'),
-                    permission: 'team view',
-                    url: '/admin/team_categories',
-                    icon: Layers2Icon,
-                },
-                {
-                    title: t('Position'),
-                    permission: 'team view',
-                    url: '/admin/positions',
-                    icon: ReplaceAllIcon,
-                },
+                // {
+                //     title: t('Team Categories'),
+                //     permission: 'team view',
+                //     url: '/admin/team_categories',
+                //     icon: Layers2Icon,
+                // },
+                // {
+                //     title: t('Position'),
+                //     permission: 'team view',
+                //     url: '/admin/positions',
+                //     icon: ReplaceAllIcon,
+                // },
                 {
                     title: t('Careers'),
                     permission: 'team view',

@@ -202,7 +202,7 @@ export default function Create() {
                                 )}
                             />
                         </div>
-                        <div className="col-span-6">
+                        {/* <div className="col-span-6">
                             <FormField
                                 control={form.control}
                                 name="location"
@@ -246,7 +246,7 @@ export default function Create() {
                                     </FormItem>
                                 )}
                             />
-                        </div>
+                        </div> */}
                     </div>
 
                     <FormField
@@ -278,7 +278,7 @@ export default function Create() {
                     />
 
                     <div className="grid grid-cols-12 gap-4">
-                        <div className="col-span-6">
+                        {/* <div className="col-span-6">
                             <FormField
                                 control={form.control}
                                 name="position_code"
@@ -347,7 +347,7 @@ export default function Create() {
                                     </FormItem>
                                 )}
                             />
-                        </div>
+                        </div> */}
 
                         <div className="col-span-6">
                             <FormField
@@ -373,7 +373,7 @@ export default function Create() {
                             />
                         </div>
                     </div>
-                    <FormField
+                    {/* <FormField
                         control={form.control}
                         name="image"
                         render={({ field }) => (
@@ -412,7 +412,7 @@ export default function Create() {
                                 <FormMessage>{errors.image && <div>{errors.image}</div>}</FormMessage>
                             </FormItem>
                         )}
-                    />
+                    /> */}
                     {/* Initial Image */}
                     {editData?.images?.length > 0 && (
                         <div className="mt-4 p-1">
@@ -457,14 +457,14 @@ export default function Create() {
                             <p className="mb-1 text-sm font-medium">{t('Qualifications')}</p>
                             <MyCkeditor5 data={qualification} setData={setQualification} />
                         </div>
-                        <div>
+                        {/* <div>
                             <p className="mb-1 text-sm font-medium">{t('Skills')}</p>
                             <MyCkeditor5 data={skill} setData={setSkill} />
                         </div>
                         <div>
                             <p className="mb-1 text-sm font-medium">{t('Duties and Responsibility')}</p>
                             <MyCkeditor5 data={responsibility} setData={setResponsibility} />
-                        </div>
+                        </div> */}
                     </div>
 
                     {/* End Long Description */}

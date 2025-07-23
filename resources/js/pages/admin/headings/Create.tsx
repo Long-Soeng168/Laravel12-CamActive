@@ -49,6 +49,12 @@ export default function Create({
             status: editData?.status || 'active',
             short_description: editData?.short_description || '',
             short_description_kh: editData?.short_description_kh || '',
+            button1_title: editData?.button1_title || '',
+            button1_title_kh: editData?.button1_title_kh || '',
+            button1_link: editData?.button1_link || '',
+            button2_title: editData?.button2_title || '',
+            button2_title_kh: editData?.button2_title_kh || '',
+            button2_link: editData?.button2_link || '',
         },
     });
 

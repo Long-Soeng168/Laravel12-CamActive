@@ -51,7 +51,12 @@ const MyTableData = () => {
                             <TableHead className="w-[50px]">{t('No')}</TableHead>
                             <TableHead className="text-left">{t('Action')}</TableHead>
                             <TableHead>{t('Image')}</TableHead>
-                            <TableHead>{t('Link')}</TableHead>
+                            {/* <TableHead>{t('Link')}</TableHead> */}
+                            <TableHead onClick={() => handleSort('link')}>
+                                <span className="flex cursor-pointer items-center">
+                                    <ArrowUpDown size={16} /> {t('Link')}
+                                </span>
+                            </TableHead>
                             <TableHead>{t('Code')}</TableHead>
                             <TableHead onClick={() => handleSort('title')}>
                                 <span className="flex cursor-pointer items-center">
@@ -150,7 +155,7 @@ const MyTableData = () => {
                                                 setSelectedImages(item.images);
                                                 setIsOpenViewImages(true);
                                             }}
-                                            className="cursor-pointer hover:bg-border overflow-hidden"
+                                            className="hover:bg-border cursor-pointer overflow-hidden"
                                         >
                                             <img
                                                 src={`/assets/images/pages/thumb/` + item.images[0]?.image}

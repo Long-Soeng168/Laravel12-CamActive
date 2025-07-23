@@ -15,20 +15,26 @@ const Footer = () => {
                     {/* Logo & Tagline */}
                     <div className="col-span-full lg:col-span-2">
                         <div className="flex items-center gap-2">
-                            <img src="/assets/cam-active/Camactive-Logo-Light.png" className="h-24 rounded-full dark:hidden" alt="Cam-Active Logo" />
                             <img
-                                src="/assets/cam-active/Camactive-Logo-Dark.png"
+                                src={`/assets/images/application_info/${application_info?.image}`}
+                                className="h-24 rounded-full dark:hidden"
+                                alt="Cam-Active Logo"
+                            />
+                            <img
+                                src={`/assets/images/application_info/${application_info?.image_dark_mode}`}
                                 className="hidden h-24 rounded-full dark:block"
                                 alt="Cam-Active Logo"
                             />
                             {/* <p className="text-xl font-bold">Cam Active</p> */}
                         </div>
-                        <p className="text-muted-foreground mt-4">A Strategic Partner for Education & Impact.</p>
+                        <p className="text-muted-foreground mt-4">
+                            {currentLocale === 'kh' ? application_info?.working_hours_kh || application_info?.working_hours : application_info?.working_hours}
+                        </p>
                     </div>
 
                     {/* Quick Links */}
                     <div>
-                        <h6 className="font-semibold">Quick Links</h6>
+                        <h6 className="font-semibold">{t('Quick Links')}</h6>
                         <ul className="mt-6 space-y-4">
                             {pages_menus?.products && (
                                 <li>

@@ -43,7 +43,7 @@ const Contact = () => {
                         </div>
                     </div>
                     <aside className="w-full shrink-0 lg:max-w-lg">
-                        <h3 className="text-3xl font-bold tracking-tight">Send Us a Message</h3>
+                        <h3 className="text-3xl font-bold tracking-tight">{t('Send Us a Message')}</h3>
                         <SendUsMessage />
                         {application_info?.google_map && (
                             <div className="mt-10 overflow-hidden rounded-xl">

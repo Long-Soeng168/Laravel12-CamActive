@@ -11,7 +11,6 @@
     "File Type": "File Type",
     "All Types": "All Types",
 
-    
     "Update Status": "Update Status",
     "This action will update the record status.": "This action will update the record status.",
     "Warning": "Warning",
@@ -79,8 +78,8 @@
     "Projects": "Projects",
     "Item": "Item",
     "Items": "Items",
-    "Heading": "Heading",
-    "Headings": "Headings",
+    "Heading": "Heading with Button",
+    "Headings": "Headings with Button",
     "Application Info": "Application Info",
     "Application Infos": "Application Infos",
     "Type": "Type",

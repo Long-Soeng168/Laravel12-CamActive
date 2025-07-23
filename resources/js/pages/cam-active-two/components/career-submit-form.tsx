@@ -73,7 +73,7 @@ const CareerSubmitForm = ({ item }: { item?: any }) => {
     return (
         <form onSubmit={handleSubmit} className="w-full shrink-0 space-y-4 lg:w-lg">
             <div className="w-full max-w-full">
-                <Label htmlFor="name">Name</Label>
+                <Label htmlFor="name">{t('Name')}</Label>
                 <Input
                     id="name"
                     type="text"
@@ -86,7 +86,7 @@ const CareerSubmitForm = ({ item }: { item?: any }) => {
             </div>
 
             <div className="w-full max-w-full">
-                <Label htmlFor="phone">Phone</Label>
+                <Label htmlFor="phone">{t('Phone')}</Label>
                 <Input
                     id="phone"
                     type="text"
@@ -99,7 +99,7 @@ const CareerSubmitForm = ({ item }: { item?: any }) => {
             </div>
 
             <div className="w-full max-w-full">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email">{t('Email')}</Label>
                 <Input
                     id="email"
                     type="email"
@@ -112,7 +112,7 @@ const CareerSubmitForm = ({ item }: { item?: any }) => {
             </div>
 
             <div className="w-full max-w-full">
-                <Label htmlFor="message">Message</Label>
+                <Label htmlFor="message">{t('Message')}</Label>
                 <Textarea
                     id="message"
                     value={data.message}
@@ -124,7 +124,7 @@ const CareerSubmitForm = ({ item }: { item?: any }) => {
             </div>
 
             <div key={fileKey} className="w-full max-w-full">
-                <Label htmlFor="cv">Attach CV</Label>
+                <Label htmlFor="cv">{t('Attach CV')}</Label>
                 <Input
                     id="cv"
                     type="file"
@@ -142,7 +142,7 @@ const CareerSubmitForm = ({ item }: { item?: any }) => {
 
             <div className="mt-6 flex w-full max-w-full justify-end gap-4">
                 <Button type="submit" className="w-full" disabled={processing}>
-                    {processing ? 'Submitting...' : 'Apply'}
+                    {processing ? t('Submitting...') : t('Apply')}
                 </Button>
             </div>
 

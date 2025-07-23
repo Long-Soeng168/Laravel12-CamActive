@@ -73,16 +73,16 @@ const MyTableData = () => {
                                     <ArrowUpDown size={16} /> {t('Gender')}
                                 </span>
                             </TableHead>
-                            <TableHead onClick={() => handleSort('shop_id')}>
+                            {/* <TableHead onClick={() => handleSort('shop_id')}>
                                 <span className="flex cursor-pointer items-center">
                                     <ArrowUpDown size={16} /> {t('Shop')}
                                 </span>
-                            </TableHead>
-                            <TableHead onClick={() => handleSort('garage_id')}>
+                            </TableHead> */}
+                            {/* <TableHead onClick={() => handleSort('garage_id')}>
                                 <span className="flex cursor-pointer items-center">
                                     <ArrowUpDown size={16} /> {t('Garage')}
                                 </span>
-                            </TableHead>
+                            </TableHead> */}
                             <TableHead onClick={() => handleSort('created_at')}>
                                 <span className="flex cursor-pointer items-center">
                                     <ArrowUpDown size={16} /> {t('Created at')}
@@ -165,14 +165,14 @@ const MyTableData = () => {
                                 </TableCell>
                                 <TableCell>{item.phone || '---'}</TableCell>
                                 <TableCell className="capitalize">{item.gender || '---'}</TableCell>
-                                <TableCell>
+                                {/* <TableCell>
                                     <Link className="hover:underline" href={`/admin/shops/${item.shop_id}`}>
                                         <Badge variant="outline" className="hover:underline">
                                             {item.shop?.name || '---'}
                                         </Badge>
                                     </Link>
-                                </TableCell>
-                                <TableCell>{item.garage_id || '---'}</TableCell>
+                                </TableCell> */}
+                                {/* <TableCell>{item.garage_id || '---'}</TableCell> */}
                                 <TableCell>
                                     {item.created_at
                                         ? new Date(item.created_at).toLocaleDateString('en-UK', {

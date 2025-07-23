@@ -15,7 +15,7 @@ const HeroOne = () => {
         <div className="flex items-center justify-center">
             <div className="mx-auto grid w-full max-w-screen-xl gap-12 px-6 py-20 lg:grid-cols-2">
                 <div>
-                    <h1 className="leading-tight font-bold lg:text-5xl">{currentLocale == 'kh' ? (hero.title_kh ?? hero.title) : hero.title}</h1>
+                    <h1 className="leading-tight font-bold text-3xl lg:text-5xl">{currentLocale == 'kh' ? (hero.title_kh ?? hero.title) : hero.title}</h1>
                     <p
                         className="mt-6 max-w-[60ch] text-xl"
                         dangerouslySetInnerHTML={{

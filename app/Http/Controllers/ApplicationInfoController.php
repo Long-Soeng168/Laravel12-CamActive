@@ -51,6 +51,7 @@ class ApplicationInfoController extends Controller implements HasMiddleware
         $image_file = $request->file('image');
         $image_file_image_dark_mode = $request->file('image_dark_mode');
         unset($validated['image']);
+        unset($validated['image_dark_mode']);
 
         foreach ($validated as $key => $value) {
             if ($value === '') {
@@ -104,6 +105,7 @@ class ApplicationInfoController extends Controller implements HasMiddleware
         $image_file = $request->file('image');
         $image_file_image_dark_mode = $request->file('image_dark_mode');
         unset($validated['image']);
+        unset($validated['image_dark_mode']);
 
         foreach ($validated as $key => $value) {
             if ($value === '') {

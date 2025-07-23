@@ -4,6 +4,7 @@ import { FileInput, FileUploader, FileUploaderContent, FileUploaderItem } from '
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { ProgressWithValue } from '@/components/ui/progress-with-value';
+import { Textarea } from '@/components/ui/textarea';
 import usePermission from '@/hooks/use-permission';
 import useTranslation from '@/hooks/use-translation';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -166,6 +167,38 @@ export default function Create() {
                         />
                     </div>
                 </div>
+                <div className="grid grid-cols-12 gap-4">
+                    <div className="col-span-6">
+                        <FormField
+                            control={form.control}
+                            name="working_hours"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>{t('Short Description')}</FormLabel>
+                                    <FormControl>
+                                        <Textarea placeholder={t('Short Description')} {...field} />
+                                    </FormControl>
+                                    <FormMessage>{errors.working_hours && <div>{errors.working_hours}</div>}</FormMessage>
+                                </FormItem>
+                            )}
+                        />
+                    </div>
+                    <div className="col-span-6">
+                        <FormField
+                            control={form.control}
+                            name="working_hours_kh"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>{t('Short Description Khmer')}</FormLabel>
+                                    <FormControl>
+                                        <Textarea placeholder={t('Short Description Khmer')} {...field} />
+                                    </FormControl>
+                                    <FormMessage>{errors.working_hours_kh && <div>{errors.working_hours_kh}</div>}</FormMessage>
+                                </FormItem>
+                            )}
+                        />
+                    </div>
+                </div>
                 <FormField
                     control={form.control}
                     name="address"
@@ -223,7 +256,7 @@ export default function Create() {
                             )}
                         />
                     </div>
-                    <div className="col-span-6">
+                    {/* <div className="col-span-6">
                         <FormField
                             control={form.control}
                             name="landline_phone"
@@ -237,7 +270,7 @@ export default function Create() {
                                 </FormItem>
                             )}
                         />
-                    </div>
+                    </div> */}
                     <div className="col-span-6">
                         <FormField
                             control={form.control}
@@ -255,39 +288,7 @@ export default function Create() {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-12 gap-4">
-                    <div className="col-span-6">
-                        <FormField
-                            control={form.control}
-                            name="working_hours"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>{t('Working Hours')}</FormLabel>
-                                    <FormControl>
-                                        <Input placeholder={t('Working Hours')} type="text" {...field} />
-                                    </FormControl>
-                                    <FormMessage>{errors.working_hours && <div>{errors.working_hours}</div>}</FormMessage>
-                                </FormItem>
-                            )}
-                        />
-                    </div>
-                    <div className="col-span-6">
-                        <FormField
-                            control={form.control}
-                            name="working_hours_kh"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>{t('Working Hours Khmer')}</FormLabel>
-                                    <FormControl>
-                                        <Input placeholder={t('Working Hours Khmer')} type="text" {...field} />
-                                    </FormControl>
-                                    <FormMessage>{errors.working_hours_kh && <div>{errors.working_hours_kh}</div>}</FormMessage>
-                                </FormItem>
-                            )}
-                        />
-                    </div>
-                </div>
-                <div className="grid grid-cols-12 gap-4">
+                {/* <div className="grid grid-cols-12 gap-4">
                     <div className="col-span-6">
                         <FormField
                             control={form.control}
@@ -318,7 +319,7 @@ export default function Create() {
                             )}
                         />
                     </div>
-                </div>
+                </div> */}
                 <div className="grid grid-cols-12 gap-4">
                     <div className="col-span-6">
                         <FormField

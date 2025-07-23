@@ -269,7 +269,7 @@ export default function Create() {
 
                     <div className="grid grid-cols-6 gap-4 lg:grid-cols-12">
                         <div className="col-span-6 flex space-x-2">
-                            <span>
+                            <span className='hidden'>
                                 <FormField
                                     control={form.control}
                                     name="source"

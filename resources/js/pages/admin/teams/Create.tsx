@@ -230,7 +230,7 @@ export default function Create() {
                     /> */}
 
                     <div className="grid grid-cols-12 gap-4">
-                        <div className="col-span-6">
+                        <div className="col-span-6 hidden">
                             <FormField
                                 control={form.control}
                                 name="category_code"

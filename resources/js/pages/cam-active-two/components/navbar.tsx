@@ -12,14 +12,23 @@ import { Menu } from './ui/navbar-menu';
 export function Navbar({ className }: { className?: string }) {
     const [active, setActive] = useState<string | null>(null);
     const { url } = usePage();
-    const { pages_menus } = usePage().props;
+    const { pages_menus, application_info } = usePage().props;
     const { t, currentLocale } = useTranslation();
     const isActive = (path: string) => (url === path ? 'text-primary font-bold underline underline-offset-4' : 'hover:text-primary');
     return (
         <div className={cn('mx-auto flex max-w-screen-xl items-center justify-between px-4 py-1.5', className)}>
             <Link href={'/'} prefetch>
-                <img src="/assets/cam-active/Camactive-Logo-Light.png" className="h-14 rounded-full dark:hidden" alt="Cam-Active Logo" />
-                <img src="/assets/cam-active/Camactive-Logo-Dark.png" className="hidden h-14 rounded-full dark:block" alt="Cam-Active Logo" />
+                <img
+                    src={`/assets/images/application_info/${application_info?.image}`}
+                    className="h-14 rounded-full dark:hidden"
+                    alt="Cam-Active Logo"
+                />
+                <img
+                    src={`/assets/images/application_info/${application_info?.image_dark_mode}`}
+                    className="h-14 rounded-full hidden dark:block"
+                    alt="Cam-Active Logo"
+                />
+                {/* <img src="/assets/cam-active/Camactive-Logo-Dark.png" className="hidden h-14 rounded-full dark:block" alt="Cam-Active Logo" /> */}
                 {/* <img src="/assets/icons/image-icon.png" className="h-20 p-2" /> */}
             </Link>
 

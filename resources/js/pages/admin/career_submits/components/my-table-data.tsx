@@ -109,7 +109,7 @@ const MyTableData = () => {
                                 <TableCell>{item.email || '---'}</TableCell>
                                 <TableCell>{item.message || '---'}</TableCell>
                                 <TableCell>
-                                    <Link className="hover:underline" href={`/admin/careers/${item.career_id}`}>
+                                    <Link className="hover:underline" href={item.career_id ? `/admin/careers/${item.career_id}` : `#`}>
                                         {item.career?.name || '---'}
                                     </Link>
                                 </TableCell>
