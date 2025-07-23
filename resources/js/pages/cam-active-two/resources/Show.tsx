@@ -1,3 +1,4 @@
+import IframeViewer from '@/components/iframe-viewer';
 import MyNoData from '@/components/my-no-data';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import useTranslation from '@/hooks/use-translation';
@@ -16,8 +17,12 @@ const Show = () => {
                         {currentLocale === 'kh' ? (item_show?.title_kh ?? item_show?.title) : item_show?.title}
                     </h3>
 
-                    <div className="mb-4 flex h-auto w-full shrink-0 justify-center overflow-hidden rounded-lg md:justify-start">
-                        <img src={`/assets/cam-active/posts/image2.jpg`} className="mb-2 size-full shrink-0 object-cover" alt="" />
+                    <div className="mb-4 h-auto w-full shrink-0 overflow-hidden rounded-lg">
+                        {item_show?.type == 'video' ? (
+                            <IframeViewer className='aspect-video' url={`${item_show?.link}`} />
+                        ) : (
+                            <img src={`/assets/cam-active/posts/image2.jpg`} className="mb-2 size-full shrink-0 object-cover" alt="" />
+                        )}
                     </div>
                     {item_show?.long_description ? (
                         <div className="prose ck-content max-w-none">

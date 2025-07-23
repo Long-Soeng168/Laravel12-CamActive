@@ -13,7 +13,7 @@ const FeaturedMedia = () => {
             <div className="w-full max-w-full flex-1 rounded-md whitespace-nowrap lg:min-w-2xl">
                 <div className="z-30 flex justify-between">
                     <h2 className="text-3xl font-bold tracking-tight">{currentLocale === 'kh' ? (medias?.name_kh ?? medias?.name) : medias?.name}</h2>
-                    <Link href={`/search_resources`}>
+                    <Link href={`/search_resources?category_code=${medias?.code}`}>
                         <Button size="sm" variant="outline">
                             {t('See More')} <ArrowRightIcon />
                         </Button>
