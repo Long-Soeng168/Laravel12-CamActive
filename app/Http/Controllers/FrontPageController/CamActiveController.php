@@ -385,7 +385,7 @@ class CamActiveController extends Controller
                     );
                     $data['cv_file'] = $created_file_name;
                     unset($data['cv']);
-                    $file_path = public_path('/assets/files/careers/' . $created_file_name);
+                    $file_path = public_path('/assets/files/career_submits/' . $created_file_name);
                 } else {
                     $file_path = null;
                 }
