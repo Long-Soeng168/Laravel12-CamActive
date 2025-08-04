@@ -96,9 +96,9 @@ const SectionCards = () => {
                             <div className="bg-primary/10 flex aspect-square h-16 items-center justify-center rounded-full">
                                 <feature.icon className="stroke-primary aspect-square size-7 object-contain" />
                             </div>
-                            <div className="flex flex-col items-end">
+                            <div className="flex flex-col items-end text-end">
                                 <span className={`text-lg ${currentLocale == 'kh' ? 'font-koulen-regular' : 'font-bold'}`}>{feature.title}</span>
-                                <p className="text-foreground/80 mt-1 text-[15px]">
+                                <p className="text-foreground/80 mt-1  text-[15px]">
                                     <strong>{feature.total_records}</strong> {feature.title}
                                 </p>
                                 {feature.sub_total_records && <p className="text-foreground/80 mt-1 text-[15px]">{feature.sub_total_records}</p>}

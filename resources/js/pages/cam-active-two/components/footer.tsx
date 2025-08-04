@@ -124,12 +124,12 @@ const Footer = () => {
 
                     <div className="text-muted-foreground flex justify-center space-x-6 text-sm">
                         {pages_menus_bottoms?.map((item, index) => (
-                            <>
+                            <div key={item.id}>
                                 {index > 0 && <span>|</span>}
                                 <Link href={`/detail_page/${item.id}`} className="hover:text-foreground">
                                     {currentLocale === 'kh' ? item?.title_kh || item?.title : item?.title}
                                 </Link>
-                            </>
+                            </div>
                         ))}
                     </div>
                 </div>

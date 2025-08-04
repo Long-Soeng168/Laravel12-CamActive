@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import useTranslation from '@/hooks/use-translation';
-import { Link, usePage } from '@inertiajs/react';
+import { Head, Link, usePage } from '@inertiajs/react';
 import { ArrowRightIcon } from 'lucide-react';
 import HeroOne from './components/hero-one';
 import LatestPosts from './components/latest_posts';
@@ -9,10 +9,24 @@ import WhyPartnerWithUs from './components/why-partner-with-us';
 import CamActiveLayout from './layouts/CamActiveLayout';
 
 const Index = () => {
-    const { latest_resources, pages_menus } = usePage().props;
+    const { latest_resources, pages_menus, hero } = usePage().props;
     const { t, currentLocale } = useTranslation();
     return (
         <CamActiveLayout>
+            <Head>
+                <title>{currentLocale == 'kh' ? (hero?.title_kh ?? hero?.title) : hero?.title}</title>
+                <meta
+                    name="description"
+                    content={(() => {
+                        const html = currentLocale === 'kh' ? (hero?.short_description_kh ?? hero?.short_description) : hero?.short_description;
+                        const temp = document.createElement('div');
+                        temp.innerHTML = html;
+                        return temp.textContent?.slice(0, 160) || '';
+                    })()}
+                />
+                <meta property="og:title" content={currentLocale == 'kh' ? (hero?.title_kh ?? hero?.title) : hero?.title} />
+                {hero?.images[0]?.image && <meta property="og:image" content={`/assets/images/pages/thumb/${hero?.images[0]?.image}`} />}
+            </Head>
             <HeroOne />
             <WhatWeDo />
             <WhyPartnerWithUs />

@@ -41,7 +41,7 @@ export default function Create() {
     const dropZoneConfig = {
         maxFiles: 100,
         maxSize: 1024 * 1024 * 2, // 2MB
-        multiple: true,
+        multiple: false,
         accept: {
             'image/jpeg': ['.jpeg', '.jpg'],
             'image/png': ['.png'],

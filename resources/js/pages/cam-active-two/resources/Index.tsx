@@ -1,21 +1,34 @@
 import { Button } from '@/components/ui/button';
 import useTranslation from '@/hooks/use-translation';
-import { Link, usePage } from '@inertiajs/react';
+import { Head, Link, usePage } from '@inertiajs/react';
 import { ArrowRightIcon } from 'lucide-react';
 import CardWithButton from '../components/card-with-button';
 import FeaturedMedia from '../components/featured-media';
 import LatestPosts from '../components/latest_posts';
-import SectionHeader from '../components/section-header';
+import PageHeading from '../components/page-heading';
 import CamActiveLayout from '../layouts/CamActiveLayout';
 
 const Index = () => {
-    const { categories_with_posts, medias, post_categories } = usePage().props;
+    const { categories_with_posts, resource } = usePage().props;
     const { t, currentLocale } = useTranslation();
     return (
         <CamActiveLayout>
-            <div className="bg-primary/10 py-10">
-                <SectionHeader title="Resources & Reports" subtitle="Ideas that inspire. Knowledge that drives impact." />
-            </div>
+            <Head>
+                <title>{currentLocale == 'kh' ? (resource?.title_kh ?? resource?.title) : resource?.title}</title>
+                <meta
+                    name="description"
+                    content={(() => {
+                        const html =
+                            currentLocale === 'kh' ? (resource?.short_description_kh ?? resource?.short_description) : resource?.short_description;
+                        const temp = document.createElement('div');
+                        temp.innerHTML = html;
+                        return temp.textContent?.slice(0, 160) || '';
+                    })()}
+                />
+                <meta property="og:title" content={currentLocale == 'kh' ? (resource?.title_kh ?? resource?.title) : resource?.title} />
+                {resource?.images[0]?.image && <meta property="og:image" content={`/assets/images/pages/thumb/${resource?.images[0]?.image}`} />}
+            </Head>
+            {resource?.id && <PageHeading item={resource} />}
             <div className="my-20">
                 {categories_with_posts?.map((category) => (
                     <>

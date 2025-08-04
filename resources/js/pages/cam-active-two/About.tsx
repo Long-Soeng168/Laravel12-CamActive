@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import useTranslation from '@/hooks/use-translation';
-import { usePage } from '@inertiajs/react';
+import { Head, usePage } from '@inertiajs/react';
 import OurApproach from './components/our-approach';
 import OurTeam from './components/our-team';
 import PageHeading from './components/page-heading';
@@ -11,6 +11,20 @@ const Careers = () => {
     const { t, currentLocale } = useTranslation();
     return (
         <CamActiveLayout>
+            <Head>
+                <title>{currentLocale == 'kh' ? (about?.title_kh ?? about?.title) : about?.title}</title>
+                <meta
+                    name="description"
+                    content={(() => {
+                        const html = currentLocale === 'kh' ? (about?.short_description_kh ?? about?.short_description) : about?.short_description;
+                        const temp = document.createElement('div');
+                        temp.innerHTML = html;
+                        return temp.textContent?.slice(0, 160) || '';
+                    })()}
+                />
+                <meta property="og:title" content={currentLocale == 'kh' ? (about?.title_kh ?? about?.title) : about?.title} />
+                {about?.images[0]?.image && <meta property="og:image" content={`/assets/images/pages/thumb/${about?.images[0]?.image}`} />}
+            </Head>
             <PageHeading item={about} />
             <div className="mx-auto mt-20 max-w-screen-xl">
                 <Card
@@ -77,11 +91,11 @@ const Careers = () => {
             <div className="mx-auto mt-20 max-w-screen-xl">
                 <Card className="flex flex-row justify-start gap-0 overflow-hidden rounded-xl border border-none border-gray-200 px-4 shadow-none transition sm:flex-row">
                     <CardContent className="flex flex-col justify-center p-0">
-                        <h2 className="text-3xl font-bold tracking-tight mb-4">
+                        <h2 className="mb-4 text-3xl font-bold tracking-tight">
                             {currentLocale === 'kh' ? (ourStory?.title_kh ?? ourStory?.title) : ourStory?.title}
                         </h2>
                         <div
-                            className="prose max-w-none text-lg text-foreground"
+                            className="prose text-foreground max-w-none text-lg"
                             dangerouslySetInnerHTML={{
                                 __html:
                                     currentLocale === 'kh'

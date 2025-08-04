@@ -90,7 +90,7 @@ class CamActiveController extends Controller
 
         return Inertia::render('cam-active-two/products/Show', [
             'relate_items' => $relate_items,
-            'item_show' => $product->load('parent'),
+            'item_show' => $product->load('parent', 'images'),
         ]);
     }
     public function impact()
@@ -143,7 +143,7 @@ class CamActiveController extends Controller
 
         return Inertia::render('cam-active-two/impacts/Show', [
             'relate_items' => $relate_items,
-            'item_show' => $impact->load('parent'),
+            'item_show' => $impact->load('parent', 'images'),
         ]);
     }
     public function why_partner_with_us_show(Page $page)
@@ -207,9 +207,15 @@ class CamActiveController extends Controller
 
         $post_categories = PostCategory::where('status', 'active')->orderBy('order_index')->get();
 
+        $resource = Page::where('code', 'RESOURCES-&-REPORTS')
+            ->with('images', 'children.images')
+            ->where('status', 'active')
+            ->orderBy('order_index')
+            ->first();
         // return $medias;
         return Inertia::render('cam-active-two/resources/Index', [
             'heading1' => $heading1,
+            'resource' => $resource,
             'categories_with_posts' => $categories_with_posts,
             'medias' => $medias,
             'post_categories' => $post_categories,

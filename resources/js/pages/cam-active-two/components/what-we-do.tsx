@@ -14,7 +14,7 @@ const WhatWeDo = () => {
             <div className="mx-auto max-w-screen-xl space-y-8 text-center">
                 <div className="grid grid-cols-1 gap-4 px-4 sm:grid-cols-2 lg:grid-cols-3">
                     {products.children?.map((item) => (
-                        <WhatWeDoCard item={item} />
+                        <WhatWeDoCard key={item.id} item={item} />
                     ))}
                     {/* <Card
                             key={item.id}

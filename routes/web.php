@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
 // Default Homepage
@@ -13,6 +14,7 @@ Route::get('/lang/{locale}', function ($locale) {
    if (!in_array($locale, ['en', 'kh'])) {
       abort(404);
    }
+
    session(['locale' => $locale]);
    return redirect()->back();
 });

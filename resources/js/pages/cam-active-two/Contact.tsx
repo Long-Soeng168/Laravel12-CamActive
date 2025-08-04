@@ -1,6 +1,6 @@
 import { Card, CardContent } from '@/components/ui/card';
 import useTranslation from '@/hooks/use-translation';
-import { usePage } from '@inertiajs/react';
+import { Head, usePage } from '@inertiajs/react';
 import PageHeading from './components/page-heading';
 import SendUsMessage from './components/sent-us-message';
 import Social from './components/social';
@@ -11,6 +11,21 @@ const Contact = () => {
     const { t, currentLocale } = useTranslation();
     return (
         <CamActiveLayout>
+            <Head>
+                <title>{currentLocale == 'kh' ? (contact?.title_kh ?? contact?.title) : contact?.title}</title>
+                <meta
+                    name="description"
+                    content={(() => {
+                        const html =
+                            currentLocale === 'kh' ? (contact?.short_description_kh ?? contact?.short_description) : contact?.short_description;
+                        const temp = document.createElement('div');
+                        temp.innerHTML = html;
+                        return temp.textContent?.slice(0, 160) || '';
+                    })()}
+                />
+                <meta property="og:title" content={currentLocale == 'kh' ? (contact?.title_kh ?? contact?.title) : contact?.title} />
+                {contact?.images[0]?.image && <meta property="og:image" content={`/assets/images/pages/thumb/${contact?.images[0]?.image}`} />}
+            </Head>
             <PageHeading item={contact} />
             <div className="mt-20">
                 <div className="mx-auto mb-20 flex max-w-screen-xl flex-col items-start gap-12 px-6 lg:flex-row">
